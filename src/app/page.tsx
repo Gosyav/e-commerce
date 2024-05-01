@@ -4,11 +4,12 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ProductCard } from '~/components/ProductCard/ProductCard';
-import { Features } from '~/pages/HomePage';
+import { Features, ProductsSection } from '~/pages/HomePage';
 import { Container } from '~/ui/Container';
 
 import banner from '../../public/assets/banner.jpg';
 import brands from '../../public/assets/brands.jpg';
+import section1 from '../../public/assets/homeSections/1.jpg';
 
 const Home: React.FC = React.memo(() => {
   return (
@@ -39,7 +40,13 @@ const Home: React.FC = React.memo(() => {
         </div>
       </Container>
 
-      <Container className="mt-6">
+      <Container className="flex flex-col gap-8">
+        <ProductsSection img={section1} />
+        <ProductsSection img={section1} />
+        <ProductsSection img={section1} />
+      </Container>
+
+      <Container className="mt-6 flex justify-center">
         <Image src={brands} alt="brands" />
       </Container>
 
