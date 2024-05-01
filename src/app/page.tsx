@@ -2,7 +2,7 @@
 import React from 'react';
 
 const Home: React.FC = React.memo(() => {
-  return <p>Hello world</p>;
+  return <p>русский текст</p>;
 });
 
 export default Home;
