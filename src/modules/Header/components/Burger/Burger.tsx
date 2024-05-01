@@ -41,7 +41,7 @@ export const Burger: React.FC<Props> = React.memo(({ setIsBurgerOpened }) => {
 
       <div className="mt-6 flex flex-col gap-3">
         {navLinks.map((link) => (
-          <div
+          <nav
             className="flex items-center justify-between text-base md:text-xl"
             key={link.path}
           >
@@ -50,7 +50,7 @@ export const Burger: React.FC<Props> = React.memo(({ setIsBurgerOpened }) => {
             </Link>
 
             <Image src={arrowIcon as string} alt="arrow" className="h-6 w-6" />
-          </div>
+          </nav>
         ))}
       </div>
     </Container>
