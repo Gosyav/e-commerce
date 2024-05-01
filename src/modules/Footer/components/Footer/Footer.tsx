@@ -21,7 +21,7 @@ export const Footer: React.FC = React.memo(() => {
   ];
 
   return (
-    <footer className="bg-color-seven py-4">
+    <footer className="bg-color-seven py-4 mt-10">
       <Container>
         <div className="border-color-five flex w-full items-center gap-2 border-b-2 pb-4">
           <Image src={logo as string} alt="logo" className="h-16 w-16" />
