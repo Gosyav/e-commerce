@@ -11,7 +11,11 @@ const config = {
       {
         protocol: 'https',
         hostname: 'content2.rozetka.com.ua'
-      }
+      },
+      {
+        protocol: 'https',
+        hostname: 'content.rozetka.com.ua'
+      },
     ]
   }
 };
