@@ -15,7 +15,7 @@ export const ProductCard: React.FC<Props> = React.memo(
   ({ img, title, price, href }) => {
     return (
       <Link
-        className="border-color-six grid grid-rows-2 justify-items-center gap-3 border-2 p-4 rounded-lg"
+        className="border-color-six grid grid-rows-[min-content_1fr] justify-items-center gap-6 border-2 p-4 rounded-lg"
         href={href}
       >
         <Image src={img} alt={title} width={150} height={150} />
