@@ -13,13 +13,13 @@
   "importOrder": [
     "^react",
     "<THIRD_PARTY_MODULES>",
-    "^@/shared/(.*)$",
-    "^@/store/(.*)$",
-    "^@/pages/(.*)$",
-    "^@/modules/(.*)$",
-    "^@/components/(.*)$",
-    "^@/ui/(.*)$",
-    "^@/assets/(.*)$",
+    "^~/shared/(.*)$",
+    "^~/store/(.*)$",
+    "^~/pages/(.*)$",
+    "^~/modules/(.*)$",
+    "^~/components/(.*)$",
+    "^~/ui/(.*)$",
+    "^~/assets/(.*)$",
     "^[./]"
   ]
 }

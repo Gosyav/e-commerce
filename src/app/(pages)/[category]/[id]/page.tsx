@@ -12,8 +12,11 @@ import { Container } from '~/ui/Container';
 const ProductPage: React.FC = React.memo(() => {
   const [count, setCount] = useState(1);
   const { id } = useParams<{ id: string }>()!;
+  const { isFetching, data: product } = api.product.getById.useQuery({ id });
 
-  const product = api.product.getById.useQuery({ id }).data;
+  if (isFetching) {
+    return <p>Зачекайте...</p>;
+  }
 
   if (!product) {
     return notFound();
@@ -23,7 +26,7 @@ const ProductPage: React.FC = React.memo(() => {
     <div className="h-full">
       <Container className="mt-4 grid h-full grid-rows-[min-content_1fr_min-content] items-center gap-5 md:grid-cols-2 md:grid-rows-[min-content_min-content]">
         <div className="order-2 md:order-none md:col-start-1 md:col-end-2">
-          <h1 className="text-3xl font-medium">{product?.title}</h1>
+          <h1 className="text-3xl font-medium">{product.title}</h1>
 
           <p className="mt-4 block text-lg font-light">{product.description}</p>
 

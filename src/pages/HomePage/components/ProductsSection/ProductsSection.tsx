@@ -2,7 +2,7 @@ import React from 'react';
 
 import Image, { type StaticImageData } from 'next/image';
 import Link from 'next/link';
-import { ProductCard } from '~/components/ProductCard/ProductCard';
+import { ProductCard } from '~/components/ProductCard';
 
 type Props = {
   img: string | StaticImageData;

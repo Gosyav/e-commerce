@@ -53,7 +53,8 @@ model VerificationToken {
 }
 
 model Product {
-    id String @id @default(cuid())
+    id     String @id @default(cuid())
+    dbType String
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
@@ -70,7 +71,7 @@ model Product {
     frequency    String?
     capacity     String?
     formFactor   String?
-    socket  String?
+    socket       String?
 
     // MotherBoard
     chipset String?

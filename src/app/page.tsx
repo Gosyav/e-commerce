@@ -3,7 +3,7 @@ import React from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { ProductCard } from '~/components/ProductCard/ProductCard';
+import { ProductCard } from '~/components/ProductCard';
 import { Features, ProductsSection } from '~/pages/HomePage';
 import { Container } from '~/ui/Container';
 

@@ -11,7 +11,7 @@ export const productRouter = createTRPCRouter({
     .query(async ({ ctx, input }) => {
       return await ctx.db.product.findMany({
         where: {
-          type: input.type,
+          dbType: input.type,
         },
       });
     }),
