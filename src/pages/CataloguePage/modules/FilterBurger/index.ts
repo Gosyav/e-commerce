@@ -1,0 +1,1 @@
+export { Burger } from './components/Burger/Burger';

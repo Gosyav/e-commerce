@@ -78,7 +78,7 @@ model Product {
     m2Count String?
 
     // CPU
-    coreCount String?
+    coreCount Int?
     withVideo Boolean?
 
     // RAM
