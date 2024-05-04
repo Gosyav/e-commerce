@@ -28,4 +28,9 @@ export const productRouter = createTRPCRouter({
         },
       });
     }),
+  getNewProducts: publicProcedure.query(async ({ ctx }) => {
+    return (
+      await ctx.db.product.findMany({ orderBy: { createdAt: 'desc' } })
+    ).slice(0, 5);
+  }),
 });

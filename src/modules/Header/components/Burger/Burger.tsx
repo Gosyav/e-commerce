@@ -2,6 +2,7 @@ import React from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
+
 import { Container } from '~/ui/Container';
 
 import arrowIcon from '../../../../../public/assets/arrow.svg';
@@ -16,12 +17,20 @@ type Props = {
 export const Burger: React.FC<Props> = React.memo(({ setIsBurgerOpened }) => {
   const navLinks = [
     {
-      name: 'test',
-      path: '/wher1e',
+      name: 'Процесори',
+      path: '/cpus',
     },
     {
-      name: 'test11',
-      path: '/where',
+      name: 'ПК',
+      path: '/pcs',
+    },
+    {
+      name: 'Монітори',
+      path: '/monitors',
+    },
+    {
+      name: 'Ноутбуки',
+      path: '/laptops',
     },
   ];
 
@@ -40,18 +49,24 @@ export const Burger: React.FC<Props> = React.memo(({ setIsBurgerOpened }) => {
       </div>
 
       <div className="mt-6 flex flex-col gap-3">
-        {navLinks.map((link) => (
-          <nav
-            className="flex items-center justify-between text-base md:text-xl"
-            key={link.path}
-          >
-            <Link href={link.path} className="pr-3.5">
-              {link.name}
-            </Link>
+        {navLinks
+          .sort((a, b) => a.name.localeCompare(b.name))
+          .map((link) => (
+            <nav
+              className="flex items-center justify-between text-base md:text-xl"
+              key={link.path}
+            >
+              <Link href={link.path} className="pr-3.5">
+                {link.name}
+              </Link>
 
-            <Image src={arrowIcon as string} alt="arrow" className="h-6 w-6" />
-          </nav>
-        ))}
+              <Image
+                src={arrowIcon as string}
+                alt="arrow"
+                className="h-6 w-6"
+              />
+            </nav>
+          ))}
       </div>
     </Container>
   );

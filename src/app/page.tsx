@@ -3,8 +3,12 @@ import React from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { ProductCard } from '~/components/ProductCard';
+import { api } from '~/trpc/server';
+
 import { Features, ProductsSection } from '~/pages/HomePage';
+
+import { ProductCard } from '~/components/ProductCard';
+
 import { Container } from '~/ui/Container';
 
 import banner from '../../public/assets/banner.jpg';
@@ -13,22 +17,30 @@ import section1 from '../../public/assets/homeSections/1.jpg';
 import section2 from '../../public/assets/homeSections/2.jpg';
 import section3 from '../../public/assets/homeSections/3.jpg';
 
-const Home: React.FC = React.memo(() => {
+const Home: React.FC = React.memo(async () => {
+  const newProducts = await api.product.getNewProducts();
+  const laptops = await api.product.getByType({ type: 'laptops' });
+  const pcs = await api.product.getByType({ type: 'pcs' });
+  const monitors = await api.product.getByType({ type: 'monitors' });
+
   const sections = [
     {
       img: section1,
       title: 'Ноутбуки',
-      linkTo: '/',
+      linkTo: '/laptops',
+      products: laptops,
     },
     {
       img: section2,
       title: 'ПК',
-      linkTo: '/',
+      linkTo: '/pcs',
+      products: pcs,
     },
     {
       img: section3,
       title: 'Монітори',
-      linkTo: '/',
+      linkTo: '/monitors',
+      products: monitors,
     },
   ];
 
@@ -44,19 +56,19 @@ const Home: React.FC = React.memo(() => {
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-semibold">Новинки</h2>
 
-          <Link href="/" className="text-color-four text-sm">
+          <Link href="/" className="text-sm text-color-four">
             Дивитися все
           </Link>
         </div>
 
         <div className="mt-4 grid grid-cols-2 gap-5 md:grid-cols-5">
-          {[1, 2, 3, 4, 5].map((item) => (
+          {newProducts.map((product) => (
             <ProductCard
-              key={item}
-              img="https://content2.rozetka.com.ua/goods/images/big/414340675.jpg"
-              title="RTX 3050"
-              price="8500"
-              href="/"
+              key={product.id}
+              img={product.imgUrl}
+              title={product.title}
+              price={product.price}
+              href={`${product.dbType}/${product.id}`}
             />
           ))}
         </div>
@@ -65,6 +77,7 @@ const Home: React.FC = React.memo(() => {
       <Container className="flex flex-col gap-8">
         {sections.map((section) => (
           <ProductsSection
+            products={section.products}
             key={section.title}
             img={section.img}
             title={section.title}
