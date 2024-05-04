@@ -18,6 +18,7 @@ type SearchObject = {
   power: string[];
   coolerSize: string[];
   coolerType: string[];
+  type?: string[];
 };
 
 export const getFilteredProducts = (
@@ -42,6 +43,7 @@ export const getFilteredProducts = (
     power,
     coolerSize,
     coolerType,
+    type = [],
   } = searchObject;
 
   return products.filter((product) => {
@@ -106,6 +108,8 @@ export const getFilteredProducts = (
       ? coolerType.includes(product.coolerType!)
       : true;
 
+    const typeMatch = type.length ? type.includes(product.type!) : true;
+
     return (
       manufacturerMatch &&
       assignmentMatch &&
@@ -123,7 +127,8 @@ export const getFilteredProducts = (
       speedMatch &&
       powerMatch &&
       coolerSizeMatch &&
-      coolerTypeMatch
+      coolerTypeMatch &&
+      typeMatch
     );
   });
 };

@@ -36,6 +36,11 @@ export const Burger: React.FC<Props> = React.memo(
 
     const itemsToFilter = [
       {
+        header: 'Тип',
+        items: getItemsToFilter('type'),
+        searchParamsSlug: 'type',
+      },
+      {
         header: 'Виробник',
         items: getItemsToFilter('manufacturer'),
         searchParamsSlug: 'manufacturer',
@@ -123,7 +128,7 @@ export const Burger: React.FC<Props> = React.memo(
     ];
 
     return (
-      <div className="fixed bottom-0 left-0 right-0 top-0 bg-white">
+      <div className="fixed bottom-0 left-0 right-0 top-0 overflow-y-scroll bg-white">
         <Container>
           <div className="mt-4 flex items-center justify-between border-b-2 pb-2">
             <h2 className="text-2xl font-semibold">Фільтр</h2>

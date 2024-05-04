@@ -33,4 +33,15 @@ export const productRouter = createTRPCRouter({
       await ctx.db.product.findMany({ orderBy: { createdAt: 'desc' } })
     ).slice(0, 5);
   }),
+  getByQuery: publicProcedure
+    .input(z.object({ query: z.string().trim() }))
+    .query(async ({ ctx, input }) => {
+      return await ctx.db.product.findMany({
+        where: {
+          title: {
+            contains: input.query,
+          },
+        },
+      });
+    }),
 });

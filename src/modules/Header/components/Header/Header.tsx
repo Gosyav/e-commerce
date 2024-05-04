@@ -1,10 +1,14 @@
 'use client';
 
 import React, { useState } from 'react';
+import { type FieldValues, type SubmitHandler, useForm } from 'react-hook-form';
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+
 import { Burger } from '~/modules/Header/components/Burger/Burger';
+
 import { Container } from '~/ui/Container';
 
 import burger from '../../../../../public/assets/burger.svg';
@@ -15,16 +19,23 @@ import userIcon from '../../../../../public/assets/user.svg';
 export const Header: React.FC = React.memo(() => {
   const [isBurgerOpened, setIsBurgerOpened] = useState(false);
 
+  const { register, handleSubmit } = useForm();
+  const router = useRouter();
+
+  const onSubmit: SubmitHandler<FieldValues> = ({ query }) => {
+    router.push(`/search?query=${query}`);
+  };
+
   return (
     <header>
-      <Container className="bg-color-seven flex items-center justify-between py-2">
-        <p className="text-color-six flex items-center gap-1 text-xs font-semibold">
+      <Container className="flex items-center justify-between bg-color-seven py-2">
+        <p className="flex items-center gap-1 text-xs font-semibold text-color-six">
           Пн-Пт:
           <span className="text-white">9.00 - 18.30</span>
         </p>
 
         <div className="flex items-center gap-2 text-xs font-semibold">
-          <p className="text-color-six hidden 2xl:block">
+          <p className="hidden text-color-six 2xl:block">
             м. Київ, вул. Хрещатик 12А
           </p>
 
@@ -34,7 +45,7 @@ export const Header: React.FC = React.memo(() => {
         </div>
       </Container>
 
-      <Container className="bg-color-three grid grid-cols-[24px_1fr_72px] items-center justify-between gap-4 py-4">
+      <Container className="grid grid-cols-[24px_1fr_72px] items-center justify-between gap-4 bg-color-three py-4">
         <button
           onClick={() => setIsBurgerOpened(true)}
           type="button"
@@ -43,11 +54,14 @@ export const Header: React.FC = React.memo(() => {
           <Image src={burger as string} alt="burger" />
         </button>
 
-        <input
-          type="search"
-          className="block w-full rounded-3xl px-4 py-2 placeholder:text-xs focus:outline-none"
-          placeholder="Шукайте тут"
-        />
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <input
+            {...register('query', { required: true })}
+            type="search"
+            className="block w-full rounded-3xl px-4 py-2 placeholder:text-xs focus:outline-none"
+            placeholder="Шукайте тут"
+          />
+        </form>
 
         <div className="flex items-center gap-2">
           <Link href="/shopping-cart">
