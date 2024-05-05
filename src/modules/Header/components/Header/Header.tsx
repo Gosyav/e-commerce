@@ -64,7 +64,7 @@ export const Header: React.FC = React.memo(() => {
         </form>
 
         <div className="flex items-center gap-2">
-          <Link href="/shopping-cart">
+          <Link href="/shoppingCart">
             <Image
               src={shoppingCart as string}
               alt="burger"

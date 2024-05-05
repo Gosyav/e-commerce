@@ -4,15 +4,33 @@ import React, { useState } from 'react';
 
 import Image from 'next/image';
 import { notFound, useParams } from 'next/navigation';
-import { Characteristics } from '~/pages/ProductPage';
 import { api } from '~/trpc/react';
+
+import { useProductsStore } from '~/shared/store';
+
+import { Characteristics } from '~/pages/ProductPage';
+
 import { Container } from '~/ui/Container';
+
+/* eslint-disable indent */
 
 // eslint-disable-next-line react/display-name
 const ProductPage: React.FC = React.memo(() => {
   const [count, setCount] = useState(1);
   const { id } = useParams<{ id: string }>()!;
   const { isFetching, data: product } = api.product.getById.useQuery({ id });
+
+  const productsInShoppingCart = useProductsStore(
+    (state) => state.productsInShoppingCart,
+  );
+
+  const addToShoppingCart = useProductsStore(
+    (state) => state.addToShoppingCart,
+  );
+
+  const removeFromShoppingCart = useProductsStore(
+    (state) => state.removeFromShoppingCart,
+  );
 
   if (isFetching) {
     return <p>Зачекайте...</p>;
@@ -67,9 +85,23 @@ const ProductPage: React.FC = React.memo(() => {
           </div>
 
           <div className="mt-4">
-            <button className="rounded-[50px] bg-color-three px-8 py-4 text-white">
-              Додати в кошик
-            </button>
+            {productsInShoppingCart?.some(
+              (item) => item.product.id === product.id,
+            ) ? (
+              <button
+                onClick={() => removeFromShoppingCart(product.id)}
+                className="rounded-[50px] border-2 border-color-three px-8 py-4 text-color-seven"
+              >
+                Прибрати з кошика
+              </button>
+            ) : (
+              <button
+                onClick={() => addToShoppingCart({ product, count })}
+                className="rounded-[50px] bg-color-three px-8 py-4 text-white"
+              >
+                Додати в кошик
+              </button>
+            )}
           </div>
         </div>
 
