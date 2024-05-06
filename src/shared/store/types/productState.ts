@@ -11,4 +11,5 @@ export type ProductState = {
   removeFromShoppingCart: (productId: string) => void;
   decreaseCount: (productId: string) => void;
   increaseCount: (productId: string) => void;
+  clearShoppingCart: () => void;
 };

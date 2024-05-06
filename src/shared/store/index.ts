@@ -58,6 +58,7 @@ export const useProductsStore = create<ProductState>()(
             },
           ),
         })),
+      clearShoppingCart: () => set({ productsInShoppingCart: [] }),
     }),
     {
       name: 'productStore',

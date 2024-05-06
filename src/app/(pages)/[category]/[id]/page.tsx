@@ -97,7 +97,7 @@ const ProductPage: React.FC = React.memo(() => {
             ) : (
               <button
                 onClick={() => addToShoppingCart({ product, count })}
-                className="rounded-[50px] bg-color-three px-8 py-4 text-white"
+                className="border-color-[transparent] rounded-[50px] border-2 bg-color-three px-8 py-4 text-white"
               >
                 Додати в кошик
               </button>
