@@ -6,11 +6,12 @@ type Props = {
   labelText: string;
   placeholder: string;
   error: string | undefined;
+  type?: string;
 };
 
 // eslint-disable-next-line react/display-name
 export const Input: React.FC<Props> = React.memo(
-  ({ value, onChange, labelText, error, placeholder }) => {
+  ({ value, onChange, labelText, error, placeholder, type = 'text' }) => {
     return (
       <label className="flex flex-col gap-2">
         <div className="flex items-center justify-between">
@@ -21,7 +22,7 @@ export const Input: React.FC<Props> = React.memo(
 
         <input
           className="rounded border-2 px-2 py-2 focus:outline-none"
-          type="text"
+          type={type}
           onChange={onChange}
           value={value}
           placeholder={placeholder}

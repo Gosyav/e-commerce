@@ -1,11 +1,12 @@
 import { PrismaAdapter } from '@auth/prisma-adapter';
+import bcrypt from 'bcrypt';
 import {
-  getServerSession,
   type DefaultSession,
   type NextAuthOptions,
+  getServerSession,
 } from 'next-auth';
 import { type Adapter } from 'next-auth/adapters';
-
+import Credentials from 'next-auth/providers/credentials';
 import { db } from '~/server/db';
 
 /**
@@ -18,8 +19,9 @@ declare module 'next-auth' {
   interface Session extends DefaultSession {
     user: {
       id: string;
-      // ...other properties
-      // role: UserRole;
+      phone: string;
+      city: string;
+      adress: string;
     } & DefaultSession['user'];
   }
 
@@ -45,7 +47,37 @@ export const authOptions: NextAuthOptions = {
     }),
   },
   adapter: PrismaAdapter(db) as Adapter,
-  providers: [],
+  providers: [
+    Credentials({
+      credentials: {
+        email: { label: 'Ел. Пошта', type: 'text' },
+        password: { label: 'Пароль', type: 'text' },
+      },
+      authorize: async (credentials) => {
+        if (!credentials?.email || !credentials.password) {
+          return null;
+        }
+
+        const user = await db.user.findUnique({
+          where: { email: credentials.email },
+        });
+
+        if (!user) return null;
+
+        const passwordMatch = await bcrypt.compare(
+          credentials.password,
+          user.password!,
+        );
+
+        if (!passwordMatch) return null;
+
+        return user;
+      },
+    }),
+  ],
+  pages: {
+    signIn: '/auth/signIn',
+  },
 };
 
 /**

@@ -19,9 +19,9 @@ import userIcon from '../../../../../public/assets/user.svg';
 export const Header: React.FC = React.memo(() => {
   const [isBurgerOpened, setIsBurgerOpened] = useState(false);
 
-  const { register, handleSubmit } = useForm();
   const router = useRouter();
 
+  const { register, handleSubmit } = useForm();
   const onSubmit: SubmitHandler<FieldValues> = ({ query }) => {
     router.push(`/search?query=${query}`);
   };
@@ -72,7 +72,7 @@ export const Header: React.FC = React.memo(() => {
             />
           </Link>
 
-          <Link href="/dashboard">
+          <Link href="/profile">
             <Image src={userIcon as string} alt="burger" className="h-8 w-8" />
           </Link>
         </div>

@@ -20,6 +20,7 @@
     "@trpc/client": "next",
     "@trpc/react-query": "next",
     "@trpc/server": "next",
+    "bcrypt": "^5.1.1",
     "next": "^14.2.1",
     "next-auth": "^4.24.6",
     "rc-pagination": "^4.0.4",
@@ -33,6 +34,7 @@
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@types/bcrypt": "^5.0.2",
     "@types/eslint": "^8.56.2",
     "@types/node": "^20.11.20",
     "@types/react": "^18.2.57",
