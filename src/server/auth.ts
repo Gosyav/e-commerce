@@ -7,6 +7,7 @@ import {
 } from 'next-auth';
 import { type Adapter } from 'next-auth/adapters';
 import Credentials from 'next-auth/providers/credentials';
+import { env } from '~/env';
 import { db } from '~/server/db';
 
 /**
@@ -15,6 +16,15 @@ import { db } from '~/server/db';
  *
  * @see https://next-auth.js.org/getting-started/typescript#module-augmentation
  */
+declare module 'next-auth/jwt' {
+  interface JWT {
+    id: string;
+    phone: string;
+    city: string;
+    adress: string;
+  }
+}
+
 declare module 'next-auth' {
   interface Session extends DefaultSession {
     user: {
@@ -25,26 +35,37 @@ declare module 'next-auth' {
     } & DefaultSession['user'];
   }
 
-  // interface User {
-  //   // ...other properties
-  //   // role: UserRole;
-  // }
+  interface User {
+    id: string;
+    name: string;
+    email: string;
+    phone: string;
+    city: string;
+    adress: string;
+  }
 }
 
-/**
- * Options for NextAuth.js used to configure adapters, providers, callbacks, etc.
- *
- * @see https://next-auth.js.org/configuration/options
- */
 export const authOptions: NextAuthOptions = {
+  secret: env.NEXTAUTH_SECRET,
+  session: {
+    strategy: 'jwt',
+  },
   callbacks: {
-    session: ({ session, user }) => ({
-      ...session,
-      user: {
-        ...session.user,
-        id: user.id,
-      },
-    }),
+    jwt: ({ token }) => {
+      return token;
+    },
+    session: ({ session, token }) => {
+      session.user = {
+        id: token.id,
+        name: token.name,
+        email: token.email,
+        phone: token.phone,
+        city: token.city,
+        adress: token.adress,
+      };
+
+      return session;
+    },
   },
   adapter: PrismaAdapter(db) as Adapter,
   providers: [
@@ -71,7 +92,17 @@ export const authOptions: NextAuthOptions = {
 
         if (!passwordMatch) return null;
 
-        return user;
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const { password, ...normalizedUser } = user;
+
+        return {
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          phone: user.phone,
+          city: user.city,
+          adress: user.adress,
+        };
       },
     }),
   ],

@@ -26,7 +26,7 @@ export const SignInForm: React.FC = React.memo(() => {
     });
 
     if (res && !res.error) {
-      router.push('/');
+      router.push('/profile');
     } else {
       setError('root', {
         message: 'Перевірте дані для входу',
