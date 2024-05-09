@@ -51,20 +51,30 @@ export const authOptions: NextAuthOptions = {
     strategy: 'jwt',
   },
   callbacks: {
-    jwt: ({ token }) => {
+    jwt: async ({ token, user }) => {
+      if (user) {
+        return {
+          ...token,
+          id: user.id,
+          phone: user.phone,
+          city: user.city,
+          adress: user.adress,
+        };
+      }
+
       return token;
     },
-    session: ({ session, token }) => {
-      session.user = {
-        id: token.id,
-        name: token.name,
-        email: token.email,
-        phone: token.phone,
-        city: token.city,
-        adress: token.adress,
+    session: async ({ session, token }) => {
+      return {
+        ...session,
+        user: {
+          ...session.user,
+          id: token.id,
+          phone: token.phone,
+          city: token.city,
+          adress: token.adress,
+        },
       };
-
-      return session;
     },
   },
   adapter: PrismaAdapter(db) as Adapter,
@@ -87,13 +97,10 @@ export const authOptions: NextAuthOptions = {
 
         const passwordMatch = await bcrypt.compare(
           credentials.password,
-          user.password!,
+          user.password,
         );
 
         if (!passwordMatch) return null;
-
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const { password, ...normalizedUser } = user;
 
         return {
           id: user.id,

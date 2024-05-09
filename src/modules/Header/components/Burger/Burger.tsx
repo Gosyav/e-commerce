@@ -56,7 +56,11 @@ export const Burger: React.FC<Props> = React.memo(({ setIsBurgerOpened }) => {
               className="flex items-center justify-between text-base md:text-xl"
               key={link.path}
             >
-              <Link href={link.path} className="pr-3.5">
+              <Link
+                onClick={() => setIsBurgerOpened(false)}
+                href={link.path}
+                className="pr-3.5"
+              >
                 {link.name}
               </Link>
 

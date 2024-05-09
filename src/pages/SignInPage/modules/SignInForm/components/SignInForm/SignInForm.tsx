@@ -4,7 +4,6 @@ import React from 'react';
 import { Controller, type SubmitHandler, useForm } from 'react-hook-form';
 
 import { signIn } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
 
 import { Input } from '~/ui/Input';
 
@@ -16,22 +15,18 @@ type Inputs = {
 // eslint-disable-next-line react/display-name
 export const SignInForm: React.FC = React.memo(() => {
   const { handleSubmit, control, formState, setError } = useForm<Inputs>();
-  const router = useRouter();
 
-  const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    const res = await signIn('credentials', {
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    signIn('credentials', {
       email: data.email,
       password: data.password,
-      redirect: false,
-    });
-
-    if (res && !res.error) {
-      router.push('/profile');
-    } else {
+      redirect: true,
+      callbackUrl: '/profile',
+    }).catch(() =>
       setError('root', {
         message: 'Перевірте дані для входу',
-      });
-    }
+      }),
+    );
   };
 
   return (
