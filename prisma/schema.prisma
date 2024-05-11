@@ -37,7 +37,7 @@ model Session {
 model User {
     id            String    @id @default(cuid())
     name          String
-    email         String   @unique
+    email         String    @unique
     password      String
     emailVerified DateTime?
     createdAt     DateTime  @default(now())
@@ -48,6 +48,7 @@ model User {
     adress        String
     accounts      Account[]
     sessions      Session[]
+    orders        Order[]
 }
 
 model VerificationToken {
@@ -69,15 +70,17 @@ model Product {
     description String
     price       Int
     imgUrl      String
+    count       Int
+
+    type         String
+    manufacturer String
 
     // General
-    type         String?
-    manufacturer String?
-    assignment   String?
-    frequency    String?
-    capacity     String?
-    formFactor   String?
-    socket       String?
+    assignment String?
+    frequency  String?
+    capacity   String?
+    formFactor String?
+    socket     String?
 
     // MotherBoard
     chipset String?
@@ -101,4 +104,19 @@ model Product {
     // CPU Cooler
     coolerSize String?
     coolerType String?
+}
+
+model Order {
+    id     String @id @default(cuid())
+    userId String
+    status String
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    adress String
+    city   String
+
+    user     User   @relation(fields: [userId], references: [id])
+    products String
 }

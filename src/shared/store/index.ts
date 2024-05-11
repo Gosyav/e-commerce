@@ -7,12 +7,9 @@ export const useProductsStore = create<ProductState>()(
   persist(
     (set) => ({
       productsInShoppingCart: [],
-      addToShoppingCart: (productToCart) =>
+      addToShoppingCart: (product) =>
         set((state) => ({
-          productsInShoppingCart: [
-            ...state.productsInShoppingCart,
-            productToCart,
-          ],
+          productsInShoppingCart: [...state.productsInShoppingCart, product],
         })),
       removeFromShoppingCart: (productId: string) =>
         set((state) => ({
@@ -65,3 +62,5 @@ export const useProductsStore = create<ProductState>()(
     },
   ),
 );
+
+export { type productToCart } from './types/productState';

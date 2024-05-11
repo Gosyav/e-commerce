@@ -1,6 +1,6 @@
 import { type Product } from '@prisma/client';
 
-type productToCart = {
+export type productToCart = {
   product: Product;
   count: number;
 };
