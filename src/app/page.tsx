@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { api } from '~/trpc/server';
 
-import { Features, ProductsSection } from '~/pages/HomePage';
+import { Features, ProductsSection } from '~/pagesComponents/HomePage';
 
 import { ProductCard } from '~/components/ProductCard';
 

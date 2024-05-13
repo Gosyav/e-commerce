@@ -2,7 +2,7 @@ import React from 'react';
 
 import Link from 'next/link';
 
-import { SignUpForm } from '~/pages/SignUpPage/modules/SignUpForm';
+import { SignUpForm } from '~/pagesComponents/SignUpPage/modules/SignUpForm';
 
 import { Container } from '~/ui/Container';
 

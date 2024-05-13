@@ -6,12 +6,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Pagination from 'rc-pagination/lib/Pagination';
+import { Burger } from '~/pagesComponents/CataloguePage/modules/FilterBurger';
+import { getFilteredProducts } from '~/pagesComponents/CataloguePage/modules/FilterBurger/helpers/getFilteredProducts';
 import { api } from '~/trpc/react';
 
 import { createSearchParams } from '~/shared/helpers/createSearchParams';
-
-import { Burger } from '~/pages/CataloguePage/modules/FilterBurger';
-import { getFilteredProducts } from '~/pages/CataloguePage/modules/FilterBurger/helpers/getFilteredProducts';
 
 import { ProductCard } from '~/components/ProductCard';
 

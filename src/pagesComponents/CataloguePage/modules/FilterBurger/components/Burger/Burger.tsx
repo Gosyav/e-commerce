@@ -3,7 +3,7 @@ import React from 'react';
 import { type Product } from '@prisma/client';
 import Image from 'next/image';
 
-import { FilterCheckBoxes } from '~/pages/CataloguePage/modules/FilterBurger/components/FilterCheckBoxes/FilterCheckBoxes';
+import { FilterCheckBoxes } from '~/pagesComponents/CataloguePage/modules/FilterBurger/components/FilterCheckBoxes/FilterCheckBoxes';
 
 import { Container } from '~/ui/Container';
 

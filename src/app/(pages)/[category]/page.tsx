@@ -3,14 +3,23 @@
 import React, { useState } from 'react';
 
 import Image from 'next/image';
-import { useParams, useRouter, useSearchParams } from 'next/navigation';
+import {
+  useParams,
+  usePathname,
+  useRouter,
+  useSearchParams,
+} from 'next/navigation';
 import Pagination from 'rc-pagination/lib/Pagination';
 import { api } from '~/trpc/react';
 
 import { createSearchParams } from '~/shared/helpers/createSearchParams';
 
-import { Burger } from '~/pages/CataloguePage/modules/FilterBurger';
-import { getFilteredProducts } from '~/pages/CataloguePage/modules/FilterBurger/helpers/getFilteredProducts';
+import { Burger } from '~/pagesComponents/CataloguePage/modules/FilterBurger';
+import { getFilteredProducts } from '~/pagesComponents/CataloguePage/modules/FilterBurger/helpers/getFilteredProducts';
+import {
+  type ConfigureState,
+  useConfigureStore,
+} from '~/pagesComponents/ConfigurePage/store';
 
 import { ProductCard } from '~/components/ProductCard';
 
@@ -21,37 +30,108 @@ import prevIcon from '../../../../public/assets/prev.svg';
 
 // eslint-disable-next-line react/display-name
 const Catalogue: React.FC = React.memo(() => {
+  const searchParams = useSearchParams()!;
   const { category } = useParams<{ category: string }>()!;
   const { isFetching, data: products } = api.product.getByType.useQuery({
     type: category,
   });
+  const currentConfigurationMutation = api.configuration.update.useMutation();
+
+  const configurationId = searchParams.get('configurationId') ?? '';
+  const { data: currentConfiguration, isFetching: isConfigurationFecthing } =
+    api.configuration.getConfigurationById.useQuery({
+      id: configurationId,
+    });
+  const clearConfigurationToUpdate = useConfigureStore(
+    (state) => state.clearConfigurationToUpdate,
+  );
+  const setWithUpdateButton = useConfigureStore(
+    (state) => state.setWithUpdateButton,
+  );
+
   const PAGE_SIZE = 10;
 
   const [isFilterOpened, setIsFilterOpened] = useState(false);
 
-  const searchParams = useSearchParams()!;
+  const filterObject = useConfigureStore((state) => state.filterObject);
+  const setConfigurationItem = useConfigureStore(
+    (state) => state.setConfigurationItem,
+  );
+  const setWithButton = useConfigureStore((state) => state.setWithButton);
+
   const router = useRouter();
+  const pathname = usePathname();
   const currentPage = +(searchParams.get('page') ?? 1);
 
-  const manufacturer = searchParams.getAll('manufacturer') || [];
-  const assignment = searchParams.getAll('assignment') || [];
-  const frequency = searchParams.getAll('frequency') || [];
-  const capacity = searchParams.getAll('capacity') || [];
-  const formFactor = searchParams.getAll('formFactor') || [];
-  const socket = searchParams.getAll('socket') || [];
-  const chipset = searchParams.getAll('chipset') || [];
-  const m2Count = searchParams.getAll('m2Count') || [];
-  const coreCount = searchParams.getAll('coreCount') || [];
-  const withVideo = searchParams.getAll('withVideo') || [];
-  const memoryType = searchParams.getAll('memoryType') || [];
-  const hddType = searchParams.getAll('hddType') || [];
-  const hddFormFactor = searchParams.getAll('hddFormFactor') || [];
-  const speed = searchParams.getAll('speed') || [];
-  const power = searchParams.getAll('power') || [];
-  const coolerSize = searchParams.getAll('coolerSize') || [];
-  const coolerType = searchParams.getAll('coolerType') || [];
+  const manufacturer = !searchParams.getAll('manufacturer').length
+    ? []
+    : searchParams.getAll('manufacturer');
 
-  if (isFetching) {
+  const assignment = !searchParams.getAll('assignment').length
+    ? []
+    : searchParams.getAll('assignment');
+
+  const frequency = !searchParams.getAll('frequency').length
+    ? []
+    : searchParams.getAll('frequency');
+
+  const capacity = !searchParams.getAll('capacity').length
+    ? []
+    : searchParams.getAll('capacity');
+
+  const formFactor = !searchParams.getAll('formFactor').length
+    ? filterObject.formFactor
+    : searchParams.getAll('formFactor');
+
+  const socket = !searchParams.getAll('socket').length
+    ? filterObject.socket
+    : searchParams.getAll('socket');
+
+  const chipset = !searchParams.getAll('chipset').length
+    ? []
+    : searchParams.getAll('chipset');
+
+  const m2Count = !searchParams.getAll('m2Count').length
+    ? []
+    : searchParams.getAll('m2Count');
+
+  const coreCount = !searchParams.getAll('coreCount').length
+    ? []
+    : searchParams.getAll('coreCount');
+
+  const withVideo = !searchParams.getAll('withVideo').length
+    ? []
+    : searchParams.getAll('withVideo');
+
+  const memoryType = !searchParams.getAll('memoryType').length
+    ? filterObject.memoryType
+    : searchParams.getAll('memoryType');
+
+  const hddType = !searchParams.getAll('hddType').length
+    ? []
+    : searchParams.getAll('hddType');
+
+  const hddFormFactor = !searchParams.getAll('hddFormFactor').length
+    ? []
+    : searchParams.getAll('hddFormFactor');
+
+  const speed = !searchParams.getAll('speed').length
+    ? []
+    : searchParams.getAll('speed');
+
+  const power = !searchParams.getAll('power').length
+    ? []
+    : searchParams.getAll('power');
+
+  const coolerSize = !searchParams.getAll('coolerSize').length
+    ? []
+    : searchParams.getAll('coolerSize');
+
+  const coolerType = !searchParams.getAll('coolerType').length
+    ? []
+    : searchParams.getAll('coolerType');
+
+  if (isFetching || isConfigurationFecthing) {
     return <p>Зачекайте...</p>;
   }
 
@@ -141,6 +221,40 @@ const Catalogue: React.FC = React.memo(() => {
                 title={product.title}
                 price={product.price}
                 href={`${product.dbType}/${product.id}`}
+                withButton={
+                  (pathname === `/${category}` && filterObject.withButton) ||
+                  (pathname === `/${category}` && filterObject.withUpdateButton)
+                }
+                onClick={() => {
+                  if (filterObject.withUpdateButton) {
+                    currentConfigurationMutation
+                      .mutateAsync({
+                        configurationId,
+                        parts: JSON.stringify({
+                          ...JSON.parse(currentConfiguration?.parts ?? ''),
+                          [category]: product,
+                        }),
+                      })
+                      .then(() => {
+                        clearConfigurationToUpdate();
+                        setWithUpdateButton(false);
+
+                        router.push(
+                          `/profile/configurations/${configurationId}`,
+                        );
+                      })
+                      .catch((e) => console.log(e));
+
+                    return;
+                  }
+
+                  setConfigurationItem(
+                    category as keyof ConfigureState['configuration'],
+                    product,
+                  );
+                  setWithButton(false);
+                  router.push('/configure');
+                }}
               />
             ))}
         </div>
@@ -160,7 +274,10 @@ const Catalogue: React.FC = React.memo(() => {
       </Container>
 
       {isFilterOpened && (
-        <Burger setIsFilterOpened={setIsFilterOpened} products={products} />
+        <Burger
+          setIsFilterOpened={setIsFilterOpened}
+          products={filteredItems}
+        />
       )}
     </div>
   );

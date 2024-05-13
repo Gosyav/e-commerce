@@ -8,8 +8,8 @@ import { useRouter } from 'next/navigation';
 
 import { useProductsStore } from '~/shared/store';
 
-import { AuthUserForm, NonAauthUserForm } from '~/pages/shoppingCartPage';
-import { CartItem } from '~/pages/shoppingCartPage/components/CartItem/CartItem';
+import { AuthUserForm, NonAauthUserForm } from '~/pagesComponents/shoppingCartPage';
+import { CartItem } from '~/pagesComponents/shoppingCartPage/components/CartItem/CartItem';
 
 import { Container } from '~/ui/Container';
 

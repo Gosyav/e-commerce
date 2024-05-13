@@ -1,31 +1,50 @@
+'use client';
+
 import React from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
+
+import { useConfigureStore } from '~/pagesComponents/ConfigurePage/store';
 
 type Props = {
   img: string;
   title: string;
   price: number;
   href: string;
+  withButton?: boolean;
+  onClick?: () => void;
 };
 
 // eslint-disable-next-line react/display-name
 export const ProductCard: React.FC<Props> = React.memo(
-  ({ img, title, price, href }) => {
+  ({ img, title, price, href, withButton = false, onClick }) => {
+    const filterObject = useConfigureStore((state) => state.filterObject);
+
     return (
-      <Link
-        className="border-color-six flex flex-col justify-between items-center gap-6 border-2 p-4 rounded-lg"
-        href={href}
-      >
+      <div className="flex flex-col items-center justify-between gap-6 rounded-lg border-2 border-color-six p-4">
         <Image src={img} alt={title} width={100} height={150} />
 
         <div className="flex flex-col gap-2">
-          <h3 className="block text-sm">{title}</h3>
+          <Link href={href} className="block text-sm">
+            {title}
+          </Link>
 
           <p className="text-lg font-bold">{`${price} грн`}</p>
         </div>
-      </Link>
+
+        {withButton && (
+          <button
+            type="button"
+            className="block w-full bg-color-three py-4 text-white"
+            onClick={onClick}
+          >
+            {filterObject.withUpdateButton
+              ? 'Оновити конфігурацію'
+              : 'Додати до конфігурації'}
+          </button>
+        )}
+      </div>
     );
   },
 );

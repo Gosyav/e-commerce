@@ -8,7 +8,7 @@ import { api } from '~/trpc/react';
 
 import { useProductsStore } from '~/shared/store';
 
-import { Characteristics } from '~/pages/ProductPage';
+import { Characteristics } from '~/pagesComponents/ProductPage';
 
 import { Container } from '~/ui/Container';
 

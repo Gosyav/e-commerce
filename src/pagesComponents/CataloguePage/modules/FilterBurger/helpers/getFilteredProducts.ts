@@ -48,7 +48,7 @@ export const getFilteredProducts = (
 
   return products.filter((product) => {
     const manufacturerMatch = manufacturer.length
-      ? manufacturer.includes(product.manufacturer!)
+      ? manufacturer.includes(product.manufacturer)
       : true;
 
     const assignmentMatch = assignment.length
@@ -108,7 +108,7 @@ export const getFilteredProducts = (
       ? coolerType.includes(product.coolerType!)
       : true;
 
-    const typeMatch = type.length ? type.includes(product.type!) : true;
+    const typeMatch = type.length ? type.includes(product.type) : true;
 
     return (
       manufacturerMatch &&

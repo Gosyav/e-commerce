@@ -2,7 +2,7 @@ import React from 'react';
 
 import Link from 'next/link';
 
-import { SignInForm } from '~/pages/SignInPage/modules/SignInForm';
+import { SignInForm } from '~/pagesComponents/SignInPage/modules/SignInForm';
 
 import { Container } from '~/ui/Container';
 

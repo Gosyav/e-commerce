@@ -12,6 +12,7 @@ import { Burger } from '~/modules/Header/components/Burger/Burger';
 import { Container } from '~/ui/Container';
 
 import burger from '../../../../../public/assets/burger.svg';
+import configureIcon from '../../../../../public/assets/configure.svg';
 import shoppingCart from '../../../../../public/assets/shoppingCart.svg';
 import userIcon from '../../../../../public/assets/user.svg';
 
@@ -45,7 +46,7 @@ export const Header: React.FC = React.memo(() => {
         </div>
       </Container>
 
-      <Container className="grid grid-cols-[24px_1fr_72px] items-center justify-between gap-4 bg-color-three py-4">
+      <Container className="grid grid-cols-[24px_1fr_108px] items-center justify-between gap-4 bg-color-three py-4">
         <button
           onClick={() => setIsBurgerOpened(true)}
           type="button"
@@ -64,16 +65,24 @@ export const Header: React.FC = React.memo(() => {
         </form>
 
         <div className="flex items-center gap-2">
+          <Link href="/configure">
+            <Image
+              src={configureIcon as string}
+              alt="configure icon"
+              className="h-8 w-8"
+            />
+          </Link>
+
           <Link href="/shoppingCart">
             <Image
               src={shoppingCart as string}
-              alt="burger"
+              alt="shopping cart"
               className="h-8 w-8"
             />
           </Link>
 
           <Link href="/profile">
-            <Image src={userIcon as string} alt="burger" className="h-8 w-8" />
+            <Image src={userIcon as string} alt="profile" className="h-8 w-8" />
           </Link>
         </div>
       </Container>
