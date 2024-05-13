@@ -32,6 +32,38 @@ export const Burger: React.FC<Props> = React.memo(({ setIsBurgerOpened }) => {
       name: 'Ноутбуки',
       path: '/laptops',
     },
+    {
+      name: 'Материнські плати',
+      path: '/motherboards',
+    },
+    {
+      name: 'Оперативна пам`ять',
+      path: '/rams',
+    },
+    {
+      name: 'Відеокарти',
+      path: '/gpus',
+    },
+    {
+      name: 'Блоки живлення',
+      path: '/powers',
+    },
+    {
+      name: 'Системи охолодження',
+      path: '/coolers',
+    },
+    {
+      name: 'SSD диски',
+      path: '/ssds',
+    },
+    {
+      name: 'Жорсткі диски',
+      path: '/hdds',
+    },
+    {
+      name: 'Корпуси',
+      path: '/cases',
+    },
   ];
 
   return (

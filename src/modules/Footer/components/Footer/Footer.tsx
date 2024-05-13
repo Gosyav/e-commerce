@@ -27,6 +27,38 @@ export const Footer: React.FC = React.memo(() => {
       name: 'Ноутбуки',
       path: '/laptops',
     },
+    {
+      name: 'Материнські плати',
+      path: '/motherboards',
+    },
+    {
+      name: 'Оперативна пам`ять',
+      path: '/rams',
+    },
+    {
+      name: 'Відеокарти',
+      path: '/gpus',
+    },
+    {
+      name: 'Блоки живлення',
+      path: '/powers',
+    },
+    {
+      name: 'Системи охолодження',
+      path: '/coolers',
+    },
+    {
+      name: 'SSD диски',
+      path: '/ssds',
+    },
+    {
+      name: 'Жорсткі диски',
+      path: '/hdds',
+    },
+    {
+      name: 'Корпуси',
+      path: '/cases',
+    },
   ];
 
   return (
@@ -35,7 +67,7 @@ export const Footer: React.FC = React.memo(() => {
         <div className="flex w-full items-center gap-2 border-b-2 border-color-five pb-4">
           <Image src={logo as string} alt="logo" className="h-16 w-16" />
 
-          <nav className="flex flex-wrap w-full items-center justify-center gap-20">
+          <nav className="flex w-full flex-wrap items-center justify-center gap-20">
             {navLinks
               .sort((a, b) => a.name.localeCompare(b.name))
               .map((link) => (
