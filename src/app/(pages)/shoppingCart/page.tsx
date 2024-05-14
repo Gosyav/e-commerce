@@ -5,11 +5,13 @@ import React, { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import {
+  AuthUserForm,
+  NonAauthUserForm,
+} from '~/pagesComponents/shoppingCartPage';
+import { CartItem } from '~/pagesComponents/shoppingCartPage/components/CartItem/CartItem';
 
 import { useProductsStore } from '~/shared/store';
-
-import { AuthUserForm, NonAauthUserForm } from '~/pagesComponents/shoppingCartPage';
-import { CartItem } from '~/pagesComponents/shoppingCartPage/components/CartItem/CartItem';
 
 import { Container } from '~/ui/Container';
 
@@ -65,7 +67,7 @@ const ShoppingCart: React.FC = React.memo(() => {
         )}
 
         {!isNonAuthFormSuccess && productsInShoppingCart.length && (
-          <div className="grid h-min grid-rows-2 gap-24 md:grid-cols-2 md:grid-rows-none xl:grid-cols-[2fr_1fr]">
+          <div className="grid h-min grid-rows-[min-content_min-content] gap-24 md:grid-cols-2 md:grid-rows-none xl:grid-cols-[2fr_1fr]">
             <div className="mt-2 bg-color-one px-4 xl:order-2">
               <div className="mt-4">
                 <h2 className="text-xl font-semibold">
