@@ -13,7 +13,11 @@ const Profile: React.FC = React.memo(() => {
   const { data, status } = useSession();
 
   if (status === 'loading') {
-    return <p>Зачекайте...</p>;
+    return (
+      <Container className="flex h-full items-center justify-center">
+        <p className="text-xl">Зачекайте...</p>
+      </Container>
+    );
   }
 
   return (

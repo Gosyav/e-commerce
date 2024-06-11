@@ -22,7 +22,7 @@ export const ProductCard: React.FC<Props> = React.memo(
 
     return (
       <div className="flex flex-col items-center justify-between gap-6 rounded-lg border-2 border-color-six p-4">
-        <Image src={img} alt={title} width={100} height={150} className="h-full" />
+        <Image src={img} alt={title} width={200} height={200} />
 
         <div className="flex flex-col gap-2">
           <Link

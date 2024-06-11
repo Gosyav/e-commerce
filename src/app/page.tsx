@@ -39,7 +39,7 @@ const Home: React.FC = React.memo(async () => {
   return (
     <div className="flex flex-col gap-8">
       <Container className="mt-6">
-        <Image src={banner} alt="banner" />
+        <Image src={banner} alt="banner" className="w-full" />
       </Container>
 
       <Features />
@@ -48,7 +48,7 @@ const Home: React.FC = React.memo(async () => {
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-semibold">Новинки</h2>
 
-          <Link href="/" className="text-sm text-color-four">
+          <Link href="/pcs" className="text-sm text-color-four">
             Дивитися все
           </Link>
         </div>

@@ -10,16 +10,15 @@ import {
   useSearchParams,
 } from 'next/navigation';
 import Pagination from 'rc-pagination/lib/Pagination';
-import { api } from '~/trpc/react';
-
-import { createSearchParams } from '~/shared/helpers/createSearchParams';
-
 import { Burger } from '~/pagesComponents/CataloguePage/modules/FilterBurger';
 import { getFilteredProducts } from '~/pagesComponents/CataloguePage/modules/FilterBurger/helpers/getFilteredProducts';
 import {
   type ConfigureState,
   useConfigureStore,
 } from '~/pagesComponents/ConfigurePage/store';
+import { api } from '~/trpc/react';
+
+import { createSearchParams } from '~/shared/helpers/createSearchParams';
 
 import { ProductCard } from '~/components/ProductCard';
 
@@ -132,7 +131,11 @@ const Catalogue: React.FC = React.memo(() => {
     : searchParams.getAll('coolerType');
 
   if (isFetching || isConfigurationFecthing) {
-    return <p>Зачекайте...</p>;
+    return (
+      <Container className="flex h-full items-center justify-center">
+        <p className="text-xl">Зачекайте...</p>
+      </Container>
+    );
   }
 
   if (!products?.length) {

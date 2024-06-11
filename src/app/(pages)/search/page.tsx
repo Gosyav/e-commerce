@@ -54,7 +54,11 @@ const SearchPage: React.FC = React.memo(() => {
   });
 
   if (isFetching) {
-    return <p>Зачекайте...</p>;
+    return (
+      <Container className="flex h-full items-center justify-center">
+        <p className="text-xl">Зачекайте...</p>
+      </Container>
+    );
   }
 
   if (!products?.length) {

@@ -4,11 +4,10 @@ import React, { useState } from 'react';
 
 import Image from 'next/image';
 import { notFound, useParams } from 'next/navigation';
+import { Characteristics } from '~/pagesComponents/ProductPage';
 import { api } from '~/trpc/react';
 
 import { useProductsStore } from '~/shared/store';
-
-import { Characteristics } from '~/pagesComponents/ProductPage';
 
 import { Container } from '~/ui/Container';
 
@@ -33,7 +32,11 @@ const ProductPage: React.FC = React.memo(() => {
   );
 
   if (isFetching) {
-    return <p>Зачекайте...</p>;
+    return (
+      <Container className="flex h-full items-center justify-center">
+        <p className="text-xl">Зачекайте...</p>
+      </Container>
+    );
   }
 
   if (!product) {

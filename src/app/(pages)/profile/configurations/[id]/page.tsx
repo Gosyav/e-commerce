@@ -5,12 +5,11 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound, useParams, useRouter } from 'next/navigation';
-import { api } from '~/trpc/react';
-
 import {
   type ConfigureState,
   useConfigureStore,
 } from '~/pagesComponents/ConfigurePage/store';
+import { api } from '~/trpc/react';
 
 import { Container } from '~/ui/Container';
 
@@ -29,7 +28,11 @@ const ConfigurationPage: React.FC = React.memo(() => {
   );
 
   if (isFetching) {
-    return <p>Зачекайте...</p>;
+    return (
+      <Container className="flex h-full items-center justify-center">
+        <p className="text-xl">Зачекайте...</p>
+      </Container>
+    );
   }
 
   if (!configuration) {

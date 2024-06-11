@@ -40,6 +40,7 @@ export const productRouter = createTRPCRouter({
         where: {
           title: {
             contains: input.query,
+            mode: 'insensitive',
           },
         },
       });

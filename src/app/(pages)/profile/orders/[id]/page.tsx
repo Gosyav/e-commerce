@@ -18,7 +18,11 @@ const OrderPage: React.FC = React.memo(() => {
   const { isFetching, data: order } = api.order.getOrderById.useQuery({ id });
 
   if (isFetching || status === 'loading') {
-    return <p>Зачекайте...</p>;
+    return (
+      <Container className="flex h-full items-center justify-center">
+        <p className="text-xl">Зачекайте...</p>
+      </Container>
+    );
   }
 
   if (!order) {

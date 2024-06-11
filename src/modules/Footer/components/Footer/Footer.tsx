@@ -69,7 +69,7 @@ export const Footer: React.FC = React.memo(() => {
             <Image src={logo as string} alt="logo" className="h-16 w-16" />
           </Link>
 
-          <nav className="flex w-full flex-wrap items-center justify-center gap-20">
+          <nav className="flex w-full flex-wrap items-center justify-start gap-20">
             {navLinks
               .sort((a, b) => a.name.localeCompare(b.name))
               .map((link) => (

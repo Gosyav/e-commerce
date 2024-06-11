@@ -5,12 +5,11 @@ import React from 'react';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { api } from '~/trpc/react';
-
 import {
   type ConfigureState,
   useConfigureStore,
 } from '~/pagesComponents/ConfigurePage/store';
+import { api } from '~/trpc/react';
 
 import { Container } from '~/ui/Container';
 
@@ -132,7 +131,11 @@ const ConfigurePage: React.FC = React.memo(() => {
   );
 
   if (status === 'loading') {
-    return <p>Зачекайте</p>;
+    return (
+      <Container className="flex h-full items-center justify-center">
+        <p className="text-xl">Зачекайте...</p>
+      </Container>
+    );
   }
 
   return (

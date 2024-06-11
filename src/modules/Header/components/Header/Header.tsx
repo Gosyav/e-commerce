@@ -41,7 +41,7 @@ export const Header: React.FC = React.memo(() => {
             м. Київ, вул. Хрещатик 12А
           </p>
 
-          <Link href="#" className="text-white underline underline-offset-4">
+          <Link href="tel:+380-00-000-00-00" className="text-white underline underline-offset-4">
             Зв`язатися з нами
           </Link>
         </div>
