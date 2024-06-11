@@ -30,9 +30,9 @@ export const ProductsSection: React.FC<Props> = React.memo(
 
             <Link
               href={linkTo}
-              className="text-sm underline underline-offset-2"
+              className="text-sm underline underline-offset-2 w-full block text-center mt-2"
             >
-              Дивитися більше
+              Оглянути
             </Link>
           </div>
         </div>
@@ -49,7 +49,7 @@ export const ProductsSection: React.FC<Props> = React.memo(
           ))}
         </div>
 
-        <div className="mt-4 hidden grid-cols-5 gap-5 md:grid">
+        <div className="mt-4 hidden grid-cols-5 gap-5 md:mt-0 md:grid">
           {products.slice(0, 5).map((product) => (
             <ProductCard
               key={product.id}

@@ -2,6 +2,7 @@ import React from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 import { Container } from '~/ui/Container';
 
@@ -15,6 +16,8 @@ type Props = {
 
 // eslint-disable-next-line react/display-name
 export const Burger: React.FC<Props> = React.memo(({ setIsBurgerOpened }) => {
+  const router = useRouter();
+
   const navLinks = [
     {
       name: 'Процесори',
@@ -69,7 +72,14 @@ export const Burger: React.FC<Props> = React.memo(({ setIsBurgerOpened }) => {
   return (
     <Container className="fixed bottom-0 left-0 right-0 top-0 bg-white py-4">
       <div className="flex items-center justify-between border-b-2 pb-6">
-        <Image src={logo as string} alt="logo" />
+        <button
+          onClick={() => {
+            router.push('/');
+            setIsBurgerOpened(false);
+          }}
+        >
+          <Image src={logo as string} alt="logo" />
+        </button>
 
         <button
           onClick={() => setIsBurgerOpened(false)}

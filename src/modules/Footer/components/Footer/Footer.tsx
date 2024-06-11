@@ -65,7 +65,9 @@ export const Footer: React.FC = React.memo(() => {
     <footer className="mt-10 bg-color-seven py-4">
       <Container>
         <div className="flex w-full items-center gap-2 border-b-2 border-color-five pb-4">
-          <Image src={logo as string} alt="logo" className="h-16 w-16" />
+          <Link href="/">
+            <Image src={logo as string} alt="logo" className="h-16 w-16" />
+          </Link>
 
           <nav className="flex w-full flex-wrap items-center justify-center gap-20">
             {navLinks

@@ -13,6 +13,7 @@ import { Container } from '~/ui/Container';
 
 import burger from '../../../../../public/assets/burger.svg';
 import configureIcon from '../../../../../public/assets/configure.svg';
+import logoWhite from '../../../../../public/assets/logoWhite.svg';
 import shoppingCart from '../../../../../public/assets/shoppingCart.svg';
 import userIcon from '../../../../../public/assets/user.svg';
 
@@ -46,7 +47,11 @@ export const Header: React.FC = React.memo(() => {
         </div>
       </Container>
 
-      <Container className="grid grid-cols-[24px_1fr_108px] items-center justify-between gap-4 bg-color-three py-4">
+      <Container className="grid grid-cols-[36px_24px_1fr_108px] items-center justify-between gap-4 bg-color-three py-4">
+        <Link href="/">
+          <Image src={logoWhite as string} alt="logo" className="h-9 w-full" />
+        </Link>
+
         <button
           onClick={() => setIsBurgerOpened(true)}
           type="button"

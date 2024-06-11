@@ -4,7 +4,6 @@ import React from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
-
 import { useConfigureStore } from '~/pagesComponents/ConfigurePage/store';
 
 type Props = {
@@ -23,11 +22,14 @@ export const ProductCard: React.FC<Props> = React.memo(
 
     return (
       <div className="flex flex-col items-center justify-between gap-6 rounded-lg border-2 border-color-six p-4">
-        <Image src={img} alt={title} width={100} height={150} />
+        <Image src={img} alt={title} width={100} height={150} className="h-full" />
 
         <div className="flex flex-col gap-2">
-          <Link href={href} className="block text-sm">
-            {title}
+          <Link
+            href={href}
+            className="block max-h-20 overflow-y-hidden text-sm"
+          >
+            {title}...
           </Link>
 
           <p className="text-lg font-bold">{`${price} грн`}</p>
