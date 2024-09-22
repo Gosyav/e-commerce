@@ -24,7 +24,7 @@ export const SignInForm: React.FC = React.memo(() => {
       callbackUrl: '/profile',
     }).catch(() =>
       setError('root', {
-        message: 'Перевірте дані для входу',
+        message: 'Check your login credentials',
       }),
     );
   };
@@ -43,20 +43,20 @@ export const SignInForm: React.FC = React.memo(() => {
             name="email"
             control={control}
             rules={{
-              required: 'Обов`язково',
+              required: 'Required',
               pattern: {
                 value:
                   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                message: 'Некоректний формат',
+                message: 'Invalid format',
               },
             }}
             render={({ field }) => (
               <Input
-                labelText="Ел. Пошта"
+                labelText="Email"
                 value={field.value}
                 onChange={(event) => field.onChange(event.target.value)}
                 error={formState.errors.email?.message}
-                placeholder="Електрона пошта"
+                placeholder="Email address"
               />
             )}
           />
@@ -65,15 +65,15 @@ export const SignInForm: React.FC = React.memo(() => {
             name="password"
             control={control}
             rules={{
-              required: 'Обов`язково',
+              required: 'Required',
             }}
             render={({ field }) => (
               <Input
-                labelText="Пароль"
+                labelText="Password"
                 value={field.value}
                 onChange={(event) => field.onChange(event.target.value)}
                 error={formState.errors.password?.message}
-                placeholder="Пароль"
+                placeholder="Password"
                 type="password"
               />
             )}
@@ -81,7 +81,7 @@ export const SignInForm: React.FC = React.memo(() => {
         </div>
 
         <button className="mt-4 block w-full rounded-[50px] border-2 border-color-three bg-color-three px-8 py-4 text-center text-white">
-          Увійти
+          Sign In
         </button>
       </form>
     </div>

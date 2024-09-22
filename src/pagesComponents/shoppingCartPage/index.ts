@@ -1,2 +1,2 @@
 export { AuthUserForm } from './modules/AuthUserForm/AuthUserForm';
-export { NonAauthUserForm } from './modules/NonAuthUserForm/NonAuthUserForm';
+export { NonAuthUserForm } from './modules/NonAuthUserForm/NonAuthUserForm';

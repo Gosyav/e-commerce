@@ -12,144 +12,126 @@ export const Characteristics: React.FC<Props> = React.memo(({ product }) => {
     <div className="flex flex-col gap-4">
       {product?.type && (
         <div className="flex items-center justify-between border-b-2 pb-1">
-          <p>Тип</p>
-
+          <p>Type</p>
           <p>{product.type}</p>
         </div>
       )}
 
       {product?.manufacturer && (
         <div className="flex items-center justify-between border-b-2 pb-1">
-          <p>Виробник</p>
-
+          <p>Manufacturer</p>
           <p>{product.manufacturer}</p>
         </div>
       )}
 
       {product?.assignment && (
         <div className="flex items-center justify-between border-b-2 pb-1">
-          <p>Призначення</p>
-
+          <p>Purpose</p>
           <p>{product.assignment}</p>
         </div>
       )}
 
       {product?.frequency && (
         <div className="flex items-center justify-between border-b-2 pb-1">
-          <p>Частота</p>
-
+          <p>Frequency</p>
           <p>{product.frequency}</p>
         </div>
       )}
 
       {product?.capacity && (
         <div className="flex items-center justify-between border-b-2 pb-1">
-          <p>Місткість</p>
-
+          <p>Capacity</p>
           <p>{product.capacity}</p>
         </div>
       )}
 
       {product?.formFactor && (
         <div className="flex items-center justify-between border-b-2 pb-1">
-          <p>Форм-фактор</p>
-
+          <p>Form Factor</p>
           <p>{product.formFactor}</p>
         </div>
       )}
 
       {product?.socket && (
         <div className="flex items-center justify-between border-b-2 pb-1">
-          <p>Сокет</p>
-
+          <p>Socket</p>
           <p>{product.socket}</p>
         </div>
       )}
 
       {product?.chipset && (
         <div className="flex items-center justify-between border-b-2 pb-1">
-          <p>Чіпсет</p>
-
+          <p>Chipset</p>
           <p>{product.chipset}</p>
         </div>
       )}
 
       {product?.m2Count && (
         <div className="flex items-center justify-between border-b-2 pb-1">
-          <p>Кількість М2</p>
-
+          <p>Number of M.2</p>
           <p>{product.m2Count}</p>
         </div>
       )}
 
       {product?.coreCount && (
         <div className="flex items-center justify-between border-b-2 pb-1">
-          <p>Кількість ядер</p>
-
+          <p>Number of Cores</p>
           <p>{product.coreCount}</p>
         </div>
       )}
 
       {product?.withVideo && (
         <div className="flex items-center justify-between border-b-2 pb-1">
-          <p>Вбудоване відео</p>
-
-          <p>{product.withVideo ? 'Так' : 'Ні'}</p>
+          <p>Integrated Video</p>
+          <p>{product.withVideo ? 'Yes' : 'No'}</p>
         </div>
       )}
 
       {product?.memoryType && (
         <div className="flex items-center justify-between border-b-2 pb-1">
-          <p>Тип пам`яті</p>
-
+          <p>Memory Type</p>
           <p>{product.memoryType}</p>
         </div>
       )}
 
       {product?.hddType && (
         <div className="flex items-center justify-between border-b-2 pb-1">
-          <p>Тип диску</p>
-
+          <p>Disk Type</p>
           <p>{product.hddType}</p>
         </div>
       )}
 
       {product?.formFactor && (
         <div className="flex items-center justify-between border-b-2 pb-1">
-          <p>Форм-фактор диску</p>
-
+          <p>Disk Form Factor</p>
           <p>{product.formFactor}</p>
         </div>
       )}
 
       {product?.speed && (
         <div className="flex items-center justify-between border-b-2 pb-1">
-          <p>Об/хв диску</p>
-
+          <p>Disk RPM</p>
           <p>{product.speed}</p>
         </div>
       )}
 
       {product?.power && (
         <div className="flex items-center justify-between border-b-2 pb-1">
-          <p>Потужність</p>
-
+          <p>Power</p>
           <p>{product.power}</p>
         </div>
       )}
 
       {product?.coolerSize && (
         <div className="flex items-center justify-between border-b-2 pb-1">
-          <p>Розмір кулера</p>
-
+          <p>Cooler Size</p>
           <p>{product.coolerSize}</p>
         </div>
       )}
 
       {product?.coolerType && (
         <div className="flex items-center justify-between border-b-2 pb-1">
-          <p>Тип охолодження</p>
-
+          <p>Cooling Type</p>
           <p>{product.coolerType}</p>
         </div>
       )}

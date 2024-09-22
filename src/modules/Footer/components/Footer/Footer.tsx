@@ -12,51 +12,51 @@ import logo from '../../../../../public/assets/logo.svg';
 export const Footer: React.FC = React.memo(() => {
   const navLinks = [
     {
-      name: 'Процесори',
+      name: 'Processors',
       path: '/cpus',
     },
     {
-      name: 'ПК',
+      name: 'PCs',
       path: '/pcs',
     },
     {
-      name: 'Монітори',
+      name: 'Monitors',
       path: '/monitors',
     },
     {
-      name: 'Ноутбуки',
+      name: 'Laptops',
       path: '/laptops',
     },
     {
-      name: 'Материнські плати',
+      name: 'Motherboards',
       path: '/motherboards',
     },
     {
-      name: 'Оперативна пам`ять',
+      name: 'RAM',
       path: '/rams',
     },
     {
-      name: 'Відеокарти',
+      name: 'Graphics Cards',
       path: '/gpus',
     },
     {
-      name: 'Блоки живлення',
+      name: 'Power Supplies',
       path: '/powers',
     },
     {
-      name: 'Системи охолодження',
+      name: 'Cooling Systems',
       path: '/coolers',
     },
     {
-      name: 'SSD диски',
+      name: 'SSD Drives',
       path: '/ssds',
     },
     {
-      name: 'Жорсткі диски',
+      name: 'Hard Drives',
       path: '/hdds',
     },
     {
-      name: 'Корпуси',
+      name: 'Cases',
       path: '/cases',
     },
   ];

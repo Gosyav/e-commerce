@@ -20,7 +20,7 @@ const OrderPage: React.FC = React.memo(() => {
   if (isFetching || status === 'loading') {
     return (
       <Container className="flex h-full items-center justify-center">
-        <p className="text-xl">Зачекайте...</p>
+        <p className="text-xl">Loading...</p>
       </Container>
     );
   }
@@ -31,19 +31,19 @@ const OrderPage: React.FC = React.memo(() => {
 
   const orderInfo = [
     {
-      title: 'Дата створення',
+      title: 'Creation Date',
       value: order.createdAt.toLocaleDateString(),
     },
     {
-      title: 'Ім`я, прізвище',
+      title: 'First Name, Last Name',
       value: session?.user.name,
     },
     {
-      title: 'Адреса Доставки',
+      title: 'Delivery Address',
       value: order.adress,
     },
     {
-      title: 'Місто',
+      title: 'City',
       value: order.city,
     },
   ];
@@ -59,7 +59,7 @@ const OrderPage: React.FC = React.memo(() => {
     <div className="h-full">
       <Container className="mt-4 grid grid-rows-[1fr_1fr_min-content] gap-20">
         <div>
-          <p className="text-wrap text-xl font-bold md:text-3xl">{`Замовлення ${order.id}`}</p>
+          <p className="text-wrap text-xl font-bold md:text-3xl">{`Order ${order.id}`}</p>
 
           <div className="mt-6 flex flex-col gap-4">
             {orderInfo.map((info) => (
@@ -76,11 +76,11 @@ const OrderPage: React.FC = React.memo(() => {
 
         <div>
           <div className="grid grid-cols-4 gap-2 text-sm font-medium md:grid-cols-5 md:text-lg">
-            <p>Товар</p>
+            <p>Product</p>
             <p className="hidden md:block">Id</p>
-            <p>Кількість</p>
-            <p>Ціна за одиницю</p>
-            <p>Сума</p>
+            <p>Quantity</p>
+            <p>Unit Price</p>
+            <p>Amount</p>
           </div>
 
           <div className="mt-4 border-t-2 border-color-three">
@@ -98,16 +98,16 @@ const OrderPage: React.FC = React.memo(() => {
                 </Link>
                 <p className="hidden md:block">{product.id}</p>
                 <p>{count}</p>
-                <p>{`${product.price} грн`}</p>
-                <p>{`${product.price * count} грн`}</p>
+                <p>{`${product.price} UAH`}</p>
+                <p>{`${product.price * count} UAH`}</p>
               </div>
             ))}
           </div>
         </div>
 
         <div className="flex items-center justify-between text-2xl font-semibold">
-          <p className="text-color-five">До сплати</p>
-          <p>{`${total} грн`}</p>
+          <p className="text-color-five">Total Due</p>
+          <p>{`${total} UAH`}</p>
         </div>
       </Container>
     </div>

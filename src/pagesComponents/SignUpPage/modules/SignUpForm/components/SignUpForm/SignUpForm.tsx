@@ -15,7 +15,7 @@ type Inputs = {
   password: string;
   phone: string;
   city: string;
-  adress: string;
+  address: string;
 };
 
 // eslint-disable-next-line react/display-name
@@ -33,7 +33,7 @@ export const SignUpForm: React.FC = React.memo(() => {
       password: data.password,
       phone: data.phone,
       city: data.city,
-      adress: data.adress,
+      adress: data.address,
     });
 
     router.push('/auth/signIn');
@@ -45,13 +45,13 @@ export const SignUpForm: React.FC = React.memo(() => {
         <Controller
           name="firstName"
           control={control}
-          rules={{ required: 'Обов`язково' }}
+          rules={{ required: 'Required' }}
           render={({ field }) => (
             <Input
-              labelText="Ім`я"
+              labelText="First Name"
               value={field.value}
               onChange={(event) => field.onChange(event.target.value)}
-              placeholder="Ваше ім`я"
+              placeholder="Your first name"
               error={formState.errors.firstName?.message}
             />
           )}
@@ -60,14 +60,14 @@ export const SignUpForm: React.FC = React.memo(() => {
         <Controller
           name="lastName"
           control={control}
-          rules={{ required: 'Обов`язково' }}
+          rules={{ required: 'Required' }}
           render={({ field }) => (
             <Input
-              labelText="Прізвище"
+              labelText="Last Name"
               value={field.value}
               onChange={(event) => field.onChange(event.target.value)}
               error={formState.errors.lastName?.message}
-              placeholder="Ваше прізвище"
+              placeholder="Your last name"
             />
           )}
         />
@@ -76,20 +76,20 @@ export const SignUpForm: React.FC = React.memo(() => {
           name="email"
           control={control}
           rules={{
-            required: 'Обов`язково',
+            required: 'Required',
             pattern: {
               value:
                 /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-              message: 'Некоректний формат',
+              message: 'Invalid format',
             },
           }}
           render={({ field }) => (
             <Input
-              labelText="Ел. Пошта"
+              labelText="Email"
               value={field.value}
               onChange={(event) => field.onChange(event.target.value)}
               error={formState.errors.email?.message}
-              placeholder="Електрона пошта"
+              placeholder="Email address"
             />
           )}
         />
@@ -97,16 +97,14 @@ export const SignUpForm: React.FC = React.memo(() => {
         <Controller
           name="password"
           control={control}
-          rules={{
-            required: 'Обов`язково',
-          }}
+          rules={{ required: 'Required' }}
           render={({ field }) => (
             <Input
-              labelText="Пароль"
+              labelText="Password"
               value={field.value}
               onChange={(event) => field.onChange(event.target.value)}
               error={formState.errors.password?.message}
-              placeholder="Пароль"
+              placeholder="Password"
               type="password"
             />
           )}
@@ -116,15 +114,15 @@ export const SignUpForm: React.FC = React.memo(() => {
           name="phone"
           control={control}
           rules={{
-            required: 'Обов`язково',
+            required: 'Required',
             pattern: {
               value: /^\+380-\d{2}-\d{3}-\d{2}-\d{2}$/,
-              message: 'Некоректний формат',
+              message: 'Invalid format',
             },
           }}
           render={({ field }) => (
             <Input
-              labelText="Телефон"
+              labelText="Phone"
               value={field.value}
               onChange={(event) => field.onChange(event.target.value)}
               error={formState.errors.phone?.message}
@@ -136,29 +134,29 @@ export const SignUpForm: React.FC = React.memo(() => {
         <Controller
           name="city"
           control={control}
-          rules={{ required: 'Обов`язково' }}
+          rules={{ required: 'Required' }}
           render={({ field }) => (
             <Input
-              labelText="Місто"
+              labelText="City"
               value={field.value}
               onChange={(event) => field.onChange(event.target.value)}
               error={formState.errors.city?.message}
-              placeholder="Місто"
+              placeholder="City"
             />
           )}
         />
 
         <Controller
-          name="adress"
+          name="address"
           control={control}
-          rules={{ required: 'Обов`язково' }}
+          rules={{ required: 'Required' }}
           render={({ field }) => (
             <Input
-              labelText="Адреса"
+              labelText="Address"
               value={field.value}
               onChange={(event) => field.onChange(event.target.value)}
-              error={formState.errors.adress?.message}
-              placeholder="Aдреса"
+              error={formState.errors.address?.message}
+              placeholder="Address"
             />
           )}
         />
@@ -166,7 +164,7 @@ export const SignUpForm: React.FC = React.memo(() => {
 
       <div className="mt-6 flex flex-col gap-4">
         <button className="rounded-[50px] border-2 border-color-three bg-color-three px-8 py-3 text-white">
-          Зареєструватися
+          Sign Up
         </button>
       </div>
     </form>

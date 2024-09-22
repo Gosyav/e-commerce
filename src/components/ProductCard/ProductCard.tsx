@@ -32,7 +32,7 @@ export const ProductCard: React.FC<Props> = React.memo(
             {title}...
           </Link>
 
-          <p className="text-lg font-bold">{`${price} грн`}</p>
+          <p className="text-lg font-bold">{`${price} UAH`}</p>
         </div>
 
         {withButton && (
@@ -42,8 +42,8 @@ export const ProductCard: React.FC<Props> = React.memo(
             onClick={onClick}
           >
             {filterObject.withUpdateButton
-              ? 'Оновити конфігурацію'
-              : 'Додати до конфігурації'}
+              ? 'Update Configuration'
+              : 'Add to Configuration'}
           </button>
         )}
       </div>

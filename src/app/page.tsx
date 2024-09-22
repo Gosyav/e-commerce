@@ -3,9 +3,8 @@ import React from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { api } from '~/trpc/server';
-
 import { Features, ProductsSection } from '~/pagesComponents/HomePage';
+import { api } from '~/trpc/server';
 
 import { ProductCard } from '~/components/ProductCard';
 
@@ -24,13 +23,13 @@ const Home: React.FC = React.memo(async () => {
   const sections = [
     {
       img: section1,
-      title: 'Ноутбуки',
+      title: 'Laptops',
       linkTo: '/laptops',
       products: laptops,
     },
     {
       img: section2,
-      title: 'ПК',
+      title: 'PCs',
       linkTo: '/pcs',
       products: pcs,
     },
@@ -46,10 +45,10 @@ const Home: React.FC = React.memo(async () => {
 
       <Container>
         <div className="flex items-center justify-between">
-          <h2 className="text-xl font-semibold">Новинки</h2>
+          <h2 className="text-xl font-semibold">New Arrivals</h2>
 
           <Link href="/pcs" className="text-sm text-color-four">
-            Дивитися все
+            View All
           </Link>
         </div>
 
@@ -66,7 +65,7 @@ const Home: React.FC = React.memo(async () => {
         </div>
       </Container>
 
-      <Container className="flex flex-col gap-8 mt-8">
+      <Container className="mt-8 flex flex-col gap-8">
         {sections.map((section) => (
           <ProductsSection
             products={section.products}

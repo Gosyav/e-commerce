@@ -24,7 +24,7 @@ const OrdersPage: React.FC = React.memo(async () => {
 
         {!orders.length && (
           <div className="flex flex-col items-center justify-center">
-            <p className="text-3xl font-semibold">Наразі немає замовлень</p>
+            <p className="text-3xl font-semibold">No orders at this time</p>
           </div>
         )}
 
@@ -32,9 +32,9 @@ const OrdersPage: React.FC = React.memo(async () => {
           <div>
             <div className="mt-2 grid grid-cols-4 gap-2 px-4 text-lg font-medium">
               <p>Id</p>
-              <p>Статус</p>
-              <p>Дата створення</p>
-              <p>Сума</p>
+              <p>Status</p>
+              <p>Creation Date</p>
+              <p>Amount</p>
             </div>
 
             <div className="mt-4 flex flex-col">
@@ -58,7 +58,7 @@ const OrdersPage: React.FC = React.memo(async () => {
                     </p>
                     <p className="truncate">{order.status}</p>
                     <p>{order.createdAt.toLocaleDateString()}</p>
-                    <p>{`${sum} грн`}</p>
+                    <p>{`${sum} UAH`}</p>
                   </Link>
                 );
               })}

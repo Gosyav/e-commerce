@@ -133,13 +133,13 @@ const Catalogue: React.FC = React.memo(() => {
   if (isFetching || isConfigurationFecthing) {
     return (
       <Container className="flex h-full items-center justify-center">
-        <p className="text-xl">Зачекайте...</p>
+        <p className="text-xl">Loading...</p>
       </Container>
     );
   }
 
   if (!products?.length) {
-    return <p>Наразі немає товарів в цій категорії</p>;
+    return <p>No products in this category yet</p>;
   }
 
   const filteredItems = getFilteredProducts(products, {
@@ -169,7 +169,7 @@ const Catalogue: React.FC = React.memo(() => {
           onClick={() => setIsFilterOpened(true)}
           className="block w-full border-2 border-color-three py-2 font-semibold"
         >
-          Фільтр
+          Filter
         </button>
       </Container>
 
@@ -177,7 +177,7 @@ const Catalogue: React.FC = React.memo(() => {
         {!filteredItems.length && (
           <div className="flex h-full flex-col items-center justify-center">
             <p className="block text-center text-xl font-bold md:text-3xl">
-              Товарів з вибраними фільтрами немає
+              No products with selected filters
             </p>
 
             <button
@@ -209,7 +209,7 @@ const Catalogue: React.FC = React.memo(() => {
               }
               className="mt-4 max-w-52 rounded-[50px] bg-color-three px-8 py-4 text-center text-white"
             >
-              Скинути фільтри
+              Reset Filters
             </button>
           </div>
         )}

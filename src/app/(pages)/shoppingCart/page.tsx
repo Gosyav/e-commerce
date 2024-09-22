@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import {
   AuthUserForm,
-  NonAauthUserForm,
+  NonAuthUserForm,
 } from '~/pagesComponents/shoppingCartPage';
 import { CartItem } from '~/pagesComponents/shoppingCartPage/components/CartItem/CartItem';
 
@@ -33,19 +33,19 @@ const ShoppingCart: React.FC = React.memo(() => {
   return (
     <div className="h-full">
       <Container className="mt-4 h-full">
-        <h1 className="text-2xl font-semibold">Кошик</h1>
+        <h1 className="text-2xl font-semibold">Shopping Cart</h1>
 
         {isNonAuthFormSuccess && (
           <div className="flex h-full flex-col items-center justify-center">
             <p className="text-center text-2xl font-bold md:text-4xl">
-              Дякуємо за замовлення! Наш менеджер невдовзі зателефонує вам!
+              Thank you for your order! Our manager will call you soon!
             </p>
 
             <Link
               className="mt-4 block rounded-[50px] border-2 border-color-three bg-color-three px-8 py-3 text-center text-white"
               href="/"
             >
-              На головну
+              Go to Home
             </Link>
           </div>
         )}
@@ -53,7 +53,7 @@ const ShoppingCart: React.FC = React.memo(() => {
         {!productsInShoppingCart.length && !isNonAuthFormSuccess && (
           <div className="flex h-full flex-col items-center justify-center">
             <p className="text-center text-2xl font-bold md:text-4xl">
-              Нажаль ваш кошик наразі порожній
+              Unfortunately, your cart is currently empty
             </p>
 
             <button
@@ -61,7 +61,7 @@ const ShoppingCart: React.FC = React.memo(() => {
               onClick={() => router.back()}
               className="mt-4 block rounded-[50px] border-2 border-color-three bg-color-three px-8 py-3 text-center text-white"
             >
-              Продовжити покупки
+              Continue Shopping
             </button>
           </div>
         )}
@@ -71,48 +71,48 @@ const ShoppingCart: React.FC = React.memo(() => {
             <div className="mt-2 bg-color-one px-4 xl:order-2">
               <div className="mt-4">
                 <h2 className="text-xl font-semibold">
-                  Коротка Інформація про вас
+                  Brief Information About You
                 </h2>
 
                 <div className="mt-2">
                   {data?.user.id ? (
                     <AuthUserForm />
                   ) : (
-                    <NonAauthUserForm setIsSuccess={setIsNonAuthFormSuccess} />
+                    <NonAuthUserForm setIsSuccess={setIsNonAuthFormSuccess} />
                   )}
                 </div>
               </div>
 
               <div className="mt-6 flex flex-col gap-4 border-t-2">
                 <div className="mt-2 flex items-center justify-between text-base font-semibold">
-                  <p>Сума всіх товарів</p>
+                  <p>Total Price of Items</p>
 
-                  <p>{`${sum} грн`}</p>
+                  <p>{`${sum} UAH`}</p>
                 </div>
 
                 <div className="mt-2 flex items-center justify-between text-base font-semibold">
-                  <p>Вартість доставки</p>
+                  <p>Delivery Cost</p>
 
-                  <p>{`${Math.round(sum * 0.05)} грн`}</p>
+                  <p>{`${Math.round(sum * 0.05)} UAH`}</p>
                 </div>
 
                 <div className="mt-2 flex items-center justify-between text-lg font-bold">
-                  <p>Усього</p>
+                  <p>Total</p>
 
-                  <p>{`${Math.round(sum * 0.05) + sum} грн`}</p>
+                  <p>{`${Math.round(sum * 0.05) + sum} UAH`}</p>
                 </div>
               </div>
             </div>
 
             <div className="mt-2 xl:order-1">
               <div className="hidden grid-cols-6 border-b-2 py-4 text-sm font-semibold xl:grid">
-                <p className="col-start-1 col-end-3">Продукт</p>
+                <p className="col-start-1 col-end-3">Product</p>
 
-                <p>Ціна</p>
+                <p>Price</p>
 
-                <p>Кількість</p>
+                <p>Quantity</p>
 
-                <p>Висновок</p>
+                <p>Subtotal</p>
               </div>
 
               <div className="mt-2">

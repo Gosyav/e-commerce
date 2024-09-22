@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Link from 'next/link';
-
 import { SignInForm } from '~/pagesComponents/SignInPage/modules/SignInForm';
 
 import { Container } from '~/ui/Container';
@@ -16,13 +15,13 @@ const SignInPage: React.FC = React.memo(() => {
         </div>
         <div className="flex flex-col items-center justify-center bg-color-one px-4 py-20">
           <div>
-            <p className="text-xl font-semibold">Новий користувач?</p>
+            <p className="text-xl font-semibold">New user?</p>
 
             <Link
               href="/auth/signUp"
               className="mt-4 block rounded-[50px] border-2 border-color-three px-8 py-4 text-center text-color-seven"
             >
-              Реєстрація
+              Register
             </Link>
           </div>
         </div>

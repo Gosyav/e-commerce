@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Image from 'next/image';
+
 import { Container } from '~/ui/Container';
 
 import feature1 from '../../../../../public/assets/features/1.svg';
@@ -12,19 +13,18 @@ export const Features: React.FC = React.memo(() => {
   const features = [
     {
       img: feature1 as string,
-      title: 'Гарантія',
-      description: '3 річна гарантія на наш товар',
+      title: 'Warranty',
+      description: '3-year warranty on our products',
     },
     {
       img: feature2 as string,
-      title: 'Персональний акаунт',
-      description:
-        'З персональною тех. підтримкою, безоплатною доставкою, та багато чого іншого',
+      title: 'Personal Account',
+      description: 'With personal tech support, free delivery, and much more',
     },
     {
       img: feature3 as string,
-      title: 'Система знижок',
-      description: 'Для постійних клієнтів знижки до 70%',
+      title: 'Discount System',
+      description: 'Up to 70% discounts for regular customers',
     },
   ];
 

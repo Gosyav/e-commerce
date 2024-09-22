@@ -2,7 +2,6 @@ import React from 'react';
 
 import { type Product } from '@prisma/client';
 import Image from 'next/image';
-
 import { FilterCheckBoxes } from '~/pagesComponents/CataloguePage/modules/FilterBurger/components/FilterCheckBoxes/FilterCheckBoxes';
 
 import { Container } from '~/ui/Container';
@@ -36,92 +35,92 @@ export const Burger: React.FC<Props> = React.memo(
 
     const itemsToFilter = [
       {
-        header: 'Тип',
+        header: 'Type',
         items: getItemsToFilter('type'),
         searchParamsSlug: 'type',
       },
       {
-        header: 'Виробник',
+        header: 'Manufacturer',
         items: getItemsToFilter('manufacturer'),
         searchParamsSlug: 'manufacturer',
       },
       {
-        header: 'Призначення',
+        header: 'Assignment',
         items: getItemsToFilter('assignment'),
         searchParamsSlug: 'assignment',
       },
       {
-        header: 'Частота',
+        header: 'Frequency',
         items: getItemsToFilter('frequency'),
         searchParamsSlug: 'frequency',
       },
       {
-        header: 'Об`єм пам`яті',
+        header: 'Memory Capacity',
         items: getItemsToFilter('capacity'),
         searchParamsSlug: 'capacity',
       },
       {
-        header: 'Форм фактор',
+        header: 'Form Factor',
         items: getItemsToFilter('formFactor'),
         searchParamsSlug: 'formFactor',
       },
       {
-        header: 'Сокет',
+        header: 'Socket',
         items: getItemsToFilter('socket'),
         searchParamsSlug: 'socket',
       },
       {
-        header: 'Чіпсет',
+        header: 'Chipset',
         items: getItemsToFilter('chipset'),
         searchParamsSlug: 'chipset',
       },
       {
-        header: 'Кількість M2',
+        header: 'Number of M2 Slots',
         items: getItemsToFilter('m2Count'),
         searchParamsSlug: 'm2Count',
       },
       {
-        header: 'Кількість ядер',
+        header: 'Core Count',
         items: getItemsToFilter('coreCount'),
         searchParamsSlug: 'coreCount',
       },
       {
-        header: 'Інтегроване відео',
+        header: 'Integrated Graphics',
         items: getItemsToFilter('withVideo'),
         searchParamsSlug: 'withVideo',
       },
       {
-        header: 'Тип пам`яті',
+        header: 'Memory Type',
         items: getItemsToFilter('memoryType'),
         searchParamsSlug: 'memoryType',
       },
       {
-        header: 'Тип диску',
+        header: 'Disk Type',
         items: getItemsToFilter('hddType'),
         searchParamsSlug: 'hddType',
       },
       {
-        header: 'Формат диску',
+        header: 'Disk Form Factor',
         items: getItemsToFilter('hddFormFactor'),
         searchParamsSlug: 'hddFormFactor',
       },
       {
-        header: 'Швидкість диску',
+        header: 'Disk Speed',
         items: getItemsToFilter('speed'),
         searchParamsSlug: 'speed',
       },
       {
-        header: 'Потужність',
+        header: 'Power',
         items: getItemsToFilter('power'),
         searchParamsSlug: 'power',
       },
       {
-        header: 'Розмір кулера',
+        header: 'Cooler Size',
         items: getItemsToFilter('coolerSize'),
         searchParamsSlug: 'coolerSize',
       },
       {
-        header: 'Тип охолодження',
+        header: 'Cooling Type',
         items: getItemsToFilter('coolerType'),
         searchParamsSlug: 'coolerType',
       },
@@ -131,7 +130,7 @@ export const Burger: React.FC<Props> = React.memo(
       <div className="fixed bottom-0 left-0 right-0 top-0 overflow-y-scroll bg-white">
         <Container>
           <div className="mt-4 flex items-center justify-between border-b-2 pb-2">
-            <h2 className="text-2xl font-semibold">Фільтр</h2>
+            <h2 className="text-2xl font-semibold">Filter</h2>
 
             <button
               onClick={() => setIsFilterOpened(false)}

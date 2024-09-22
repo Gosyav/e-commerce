@@ -34,7 +34,7 @@ const ConfigurePage: React.FC = React.memo(() => {
 
   const parts = [
     {
-      title: 'Материнська плата',
+      title: 'Motherboard',
       onClick: () => {
         setWithButton(true);
         router.push('/motherboards');
@@ -43,7 +43,7 @@ const ConfigurePage: React.FC = React.memo(() => {
       disabled: false,
     },
     {
-      title: 'Процесор',
+      title: 'Processor',
       onClick: () => {
         setFilterObjectItem({
           socket: [configuration.motherboards?.socket] as string[],
@@ -54,7 +54,7 @@ const ConfigurePage: React.FC = React.memo(() => {
       disabled: !configuration.motherboards,
     },
     {
-      title: 'Оперативна пам`ять',
+      title: 'RAM',
       onClick: () => {
         setFilterObjectItem({
           memoryType: [configuration.motherboards?.memoryType] as string[],
@@ -65,7 +65,7 @@ const ConfigurePage: React.FC = React.memo(() => {
       disabled: !configuration.cpus,
     },
     {
-      title: 'Відеокарта',
+      title: 'Graphics Card',
       onClick: () => {
         setWithButton(true);
         clearFilterObject();
@@ -75,7 +75,7 @@ const ConfigurePage: React.FC = React.memo(() => {
       disabled: !configuration.rams,
     },
     {
-      title: 'Блок живлення',
+      title: 'Power Supply',
       onClick: () => {
         setWithButton(true);
         router.push('/powers');
@@ -84,7 +84,7 @@ const ConfigurePage: React.FC = React.memo(() => {
       disabled: !configuration.gpus,
     },
     {
-      title: 'Охолодження процесора',
+      title: 'CPU Cooler',
       onClick: () => {
         setWithButton(true);
         router.push('/coolers');
@@ -93,7 +93,7 @@ const ConfigurePage: React.FC = React.memo(() => {
       disabled: !configuration.powers,
     },
     {
-      title: 'SSD диск',
+      title: 'SSD',
       onClick: () => {
         setWithButton(true);
         router.push('/ssds');
@@ -102,7 +102,7 @@ const ConfigurePage: React.FC = React.memo(() => {
       disabled: !configuration.coolers,
     },
     {
-      title: 'Жорсткий диск',
+      title: 'HDD',
       onClick: () => {
         setWithButton(true);
         router.push('/hdds');
@@ -111,7 +111,7 @@ const ConfigurePage: React.FC = React.memo(() => {
       disabled: !configuration.ssds,
     },
     {
-      title: 'Корпус',
+      title: 'Case',
       onClick: () => {
         setWithButton(true);
 
@@ -133,7 +133,7 @@ const ConfigurePage: React.FC = React.memo(() => {
   if (status === 'loading') {
     return (
       <Container className="flex h-full items-center justify-center">
-        <p className="text-xl">Зачекайте...</p>
+        <p className="text-xl">Loading...</p>
       </Container>
     );
   }
@@ -143,7 +143,7 @@ const ConfigurePage: React.FC = React.memo(() => {
       <Container className="mt-4">
         <div className="flex flex-col items-center justify-between md:flex-row">
           <h1 className="text-2xl font-semibold">
-            Тут ви можете створити свою конфігурацію ПК
+            Here you can create your PC configuration
           </h1>
 
           <button
@@ -151,7 +151,7 @@ const ConfigurePage: React.FC = React.memo(() => {
             className="mt-4 block w-full rounded-[50px] border-2 border-color-three px-2 py-2 md:mt-0 md:w-fit"
             onClick={() => clearConfiguration()}
           >
-            Очистити конфігурацію
+            Clear Configuration
           </button>
         </div>
 
@@ -168,7 +168,7 @@ const ConfigurePage: React.FC = React.memo(() => {
                   className="mt-2 block w-full border-2 border-dashed border-color-five py-8 disabled:cursor-not-allowed"
                 >
                   <p className="block text-center text-color-five">
-                    Немає обраного елемента
+                    No selected item
                   </p>
                 </button>
               )}
@@ -186,7 +186,7 @@ const ConfigurePage: React.FC = React.memo(() => {
                     {configuration[part.name]?.title}
                   </h3>
 
-                  <p className="block w-full text-left font-medium md:text-right">{`${configuration[part.name]?.price} грн`}</p>
+                  <p className="block w-full text-left font-medium md:text-right">{`${configuration[part.name]?.price} UAH`}</p>
                 </div>
               )}
             </div>
@@ -194,8 +194,8 @@ const ConfigurePage: React.FC = React.memo(() => {
         </div>
 
         <div className="mt-6 flex items-center justify-between border-t-2 py-4">
-          <p className="text-xl font-medium text-color-five">Усього</p>
-          <p className="text-xl font-medium">{`${total} грн`}</p>
+          <p className="text-xl font-medium text-color-five">Total</p>
+          <p className="text-xl font-medium">{`${total} UAH`}</p>
         </div>
 
         {!Object.values(configuration).some((item) => !item) &&
@@ -212,7 +212,7 @@ const ConfigurePage: React.FC = React.memo(() => {
                   clearConfiguration();
                 }}
               >
-                Зберегти конфігурацію
+                Save Configuration
               </button>
             </div>
           )}

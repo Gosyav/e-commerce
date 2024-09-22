@@ -18,7 +18,7 @@ export const orderRouter = createTRPCRouter({
           products: input.products,
           adress: input.adress,
           city: input.city,
-          status: 'Очікування'
+          status: 'Waiting'
         },
       });
     }),

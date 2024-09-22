@@ -9,15 +9,15 @@ import Link from 'next/link';
 export const ProfileNavBar: React.FC = React.memo(() => {
   const links = [
     {
-      name: 'Профіль',
+      name: 'Profile',
       to: '/profile',
     },
     {
-      name: 'Інформація про замовлення',
+      name: 'Order Information',
       to: '/profile/orders',
     },
     {
-      name: 'Збережені збірки',
+      name: 'Saved Configurations',
       to: '/profile/configurations',
     },
   ];
@@ -36,7 +36,7 @@ export const ProfileNavBar: React.FC = React.memo(() => {
         className="text-left text-lg font-semibold"
         onClick={() => signOut()}
       >
-        Вийти
+        Sign Out
       </button>
     </div>
   );

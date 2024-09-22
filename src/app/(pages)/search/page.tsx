@@ -56,7 +56,7 @@ const SearchPage: React.FC = React.memo(() => {
   if (isFetching) {
     return (
       <Container className="flex h-full items-center justify-center">
-        <p className="text-xl">Зачекайте...</p>
+        <p className="text-xl">Loading...</p>
       </Container>
     );
   }
@@ -65,14 +65,14 @@ const SearchPage: React.FC = React.memo(() => {
     return (
       <div className="flex h-full flex-col items-center justify-center">
         <p className="block text-center text-xl font-bold md:text-3xl">
-          Товарів з таким пошуковим запитом немає
+          No products found for this search query
         </p>
 
         <Link
           href="/"
           className="mt-4 max-w-52 rounded-[50px] bg-color-three px-8 py-4 text-center text-white"
         >
-          На головну
+          Go to Homepage
         </Link>
       </div>
     );
@@ -103,7 +103,7 @@ const SearchPage: React.FC = React.memo(() => {
     return (
       <div className="flex h-full flex-col items-center justify-center">
         <p className="block text-center text-xl font-bold md:text-3xl">
-          Товарів з вибраними фільтрами немає
+          No products match the selected filters
         </p>
 
         <button
@@ -135,7 +135,7 @@ const SearchPage: React.FC = React.memo(() => {
           }
           className="mt-4 max-w-52 rounded-[50px] bg-color-three px-8 py-4 text-center text-white"
         >
-          Скинути фільтри
+          Reset Filters
         </button>
       </div>
     );
@@ -148,7 +148,7 @@ const SearchPage: React.FC = React.memo(() => {
           onClick={() => setIsFilterOpened(true)}
           className="block w-full border-2 border-color-three py-2 font-semibold"
         >
-          Фільтр
+          Filter
         </button>
       </Container>
 
@@ -156,7 +156,7 @@ const SearchPage: React.FC = React.memo(() => {
         {!filteredItems.length && (
           <div className="flex h-full flex-col items-center justify-center">
             <p className="block text-center text-xl font-bold md:text-3xl">
-              Товарів з вибраними фільтрами немає
+              No products match the selected filters
             </p>
 
             <button
@@ -189,7 +189,7 @@ const SearchPage: React.FC = React.memo(() => {
               }
               className="mt-4 max-w-52 rounded-[50px] bg-color-three px-8 py-4 text-center text-white"
             >
-              Скинути фільтри
+              Reset Filters
             </button>
           </div>
         )}

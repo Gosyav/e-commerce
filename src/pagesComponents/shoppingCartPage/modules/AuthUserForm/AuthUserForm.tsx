@@ -47,10 +47,10 @@ export const AuthUserForm: React.FC = React.memo(() => {
           control={control}
           render={({ field }) => (
             <Input
-              labelText="Адреса"
+              labelText="Address"
               value={field.value!}
               onChange={(event) => field.onChange(event.target.value)}
-              placeholder="Адреса"
+              placeholder="Address"
               error={formState.errors.adress?.message}
             />
           )}
@@ -61,11 +61,11 @@ export const AuthUserForm: React.FC = React.memo(() => {
           control={control}
           render={({ field }) => (
             <Input
-              labelText="Місто"
+              labelText="City"
               value={field.value!}
               onChange={(event) => field.onChange(event.target.value)}
               error={formState.errors.city?.message}
-              placeholder="Місто"
+              placeholder="City"
             />
           )}
         />
@@ -73,7 +73,7 @@ export const AuthUserForm: React.FC = React.memo(() => {
 
       <div className="mt-6 flex flex-col gap-4">
         <button className="rounded-[50px] border-2 border-color-three bg-color-three px-8 py-3 text-white">
-          Оформити замовлення
+          Place Order
         </button>
       </div>
     </form>

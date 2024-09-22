@@ -34,7 +34,7 @@ const ProductPage: React.FC = React.memo(() => {
   if (isFetching) {
     return (
       <Container className="flex h-full items-center justify-center">
-        <p className="text-xl">Зачекайте...</p>
+        <p className="text-xl">Loading...</p>
       </Container>
     );
   }
@@ -52,7 +52,7 @@ const ProductPage: React.FC = React.memo(() => {
           <p className="mt-4 block text-lg font-light">{product.description}</p>
 
           <div className="mt-4 flex items-center justify-between">
-            <p className="text-3xl font-bold">{product.price * count} грн</p>
+            <p className="text-3xl font-bold">{product.price * count} UAH</p>
 
             <div className="flex items-center gap-2 rounded bg-color-three p-4 text-white">
               <button
@@ -95,14 +95,14 @@ const ProductPage: React.FC = React.memo(() => {
                 onClick={() => removeFromShoppingCart(product.id)}
                 className="rounded-[50px] border-2 border-color-three px-8 py-4 text-color-seven"
               >
-                Прибрати з кошика
+                Remove from Cart
               </button>
             ) : (
               <button
                 onClick={() => addToShoppingCart({ product, count })}
                 className="border-color-[transparent] rounded-[50px] border-2 bg-color-three px-8 py-4 text-white"
               >
-                Додати в кошик
+                Add to Cart
               </button>
             )}
           </div>

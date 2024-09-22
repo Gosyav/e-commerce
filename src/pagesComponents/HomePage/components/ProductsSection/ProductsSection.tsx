@@ -32,7 +32,7 @@ export const ProductsSection: React.FC<Props> = React.memo(
               href={linkTo}
               className="text-sm underline underline-offset-2 w-full block text-center mt-2"
             >
-              Оглянути
+              See more
             </Link>
           </div>
         </div>

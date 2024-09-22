@@ -15,7 +15,7 @@ const Profile: React.FC = React.memo(() => {
   if (status === 'loading') {
     return (
       <Container className="flex h-full items-center justify-center">
-        <p className="text-xl">Зачекайте...</p>
+        <p className="text-xl">Loading...</p>
       </Container>
     );
   }
@@ -27,7 +27,7 @@ const Profile: React.FC = React.memo(() => {
 
         <div className="flex flex-col gap-8 xl:flex-row">
           <div className="flex flex-col gap-4">
-            <p className="text-xl font-medium">Контактна інформація</p>
+            <p className="text-xl font-medium">Contact Information</p>
 
             <div className="flex flex-col text-color-five">
               <span className="text-lg">{data?.user.name}</span>
@@ -39,7 +39,7 @@ const Profile: React.FC = React.memo(() => {
           </div>
 
           <div className="flex flex-col gap-4">
-            <p className="text-xl font-medium">Адреса доставки</p>
+            <p className="text-xl font-medium">Delivery Address</p>
 
             <div className="flex flex-col text-color-five">
               <span className="text-lg">{data?.user.city}</span>

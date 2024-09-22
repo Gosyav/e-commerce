@@ -1,10 +1,9 @@
 import React from 'react';
 
 import Link from 'next/link';
+import { type ConfigureState } from '~/pagesComponents/ConfigurePage/store';
 import { getServerAuthSession } from '~/server/auth';
 import { api } from '~/trpc/server';
-
-import { type ConfigureState } from '~/pagesComponents/ConfigurePage/store';
 
 import { ProfileNavBar } from '~/components/ProfileNavBar';
 
@@ -24,7 +23,9 @@ const ConfigurationsPage: React.FC = React.memo(async () => {
 
         {!configurations.length && (
           <div className="flex flex-col items-center justify-center">
-            <p className="text-3xl font-semibold">Наразі немає збірок</p>
+            <p className="text-3xl font-semibold">
+              No configurations at this time
+            </p>
           </div>
         )}
 
@@ -32,8 +33,8 @@ const ConfigurationsPage: React.FC = React.memo(async () => {
           <div>
             <div className="mt-2 grid grid-cols-3 gap-2 px-4 text-lg font-medium">
               <p>Id</p>
-              <p>Дата створення</p>
-              <p>Сума</p>
+              <p>Creation Date</p>
+              <p>Amount</p>
             </div>
 
             <div className="mt-4 flex flex-col">
@@ -57,7 +58,7 @@ const ConfigurationsPage: React.FC = React.memo(async () => {
                       {configuration.id}
                     </p>
                     <p>{configuration.createdAt.toLocaleDateString()}</p>
-                    <p>{`${sum} грн`}</p>
+                    <p>{`${sum} UAH`}</p>
                   </Link>
                 );
               })}
