@@ -38,3 +38,7 @@ A modern, full-stack e-commerce solution designed for scalable online retail. Bu
   - TypeScript-first codebase
   - ESLint, Prettier, and Tailwind plugins for code quality and consistency
   - Scripts for local development, database management, and linting
+![prisma-erd](https://github.com/user-attachments/assets/e80d0fd3-094e-410a-b369-83adf80eb631)
+
+<?xml version="1.0" standalone="no"?>
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" id="mermaid-svg" width="undefined" xmlns="http://www.w3.org/2000/svg" height="undefined" style="max-width: 1271.066650390625px;" viewBox="0 0 1271.066650390625 1030.4000244140625">
